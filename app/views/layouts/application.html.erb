@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>Mudonymous</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <%= image_tag 'Logo.png', height: '25' %>
+      </div>
+      <ul class="nav">
+        <li>Home</li>
+      </ul>
+    </div>
 
+  </div>
 <%= yield %>
 
+  <div class="footer">
+    <div class="container">
+      <p>Mudonymous</p>
+    </div>
+  </div>
 </body>
 </html>

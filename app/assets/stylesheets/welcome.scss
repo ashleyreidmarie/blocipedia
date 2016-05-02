@@ -1,3 +1,70 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.jumbotron {
+  height: 950px;
+  background-color: #000;
+  background-image: url(Landing9.jpg);
+  background-size: cover;
+}
+
+.main {
+  position: relative;
+  top: 180px;
+  text-align: center;
+}
+
+#jumbo-text {
+  color: #000;
+  font-family: 'Courier New', serif;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 70px;
+  margin-top: 0;
+  margin-bottom: 80px;
+  text-transform: uppercase;
+}
+
+.btn-main, .btn-main:visited, .btn-main:focus {
+  transition: all 0.5s ease;
+  color: #000;
+  border: 5px solid #000;
+  font-family: 'Courier New', serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 1.3px;
+  padding: 16px 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 25%;
+  margin: auto;
+}
+
+.btn-main:hover, .btn-main:active {
+    text-decoration: none;
+    transition: all .75s ease;
+    color: #0080FF;
+    border: 5px solid #0080FF;
+}
+
+
+
+
+
+
+
+
+.btn-default {
+  border: 1px solid #333;
+  padding: 13px 30px 13px 30px;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  display: inline-block;
+  letter-spacing: 1.3px;
+}
