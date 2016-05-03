@@ -25,7 +25,24 @@
   font-size: 70px;
   margin-top: 0;
   margin-bottom: 80px;
-  text-transform: uppercase;
+}
+
+@keyframes "blink" {  from, to {    color: transparent;  }  50% {    color: black;  }}
+@-moz-keyframes blink {  from, to {    color: transparent;  }  50% {    color: black;  }}
+@-webkit-keyframes "blink" {  from, to {    color: transparent;  }  50% {    color: black;  }}
+@-ms-keyframes "blink" {  from, to {    color: transparent;  }  50% {    color: black;  }}
+@-o-keyframes "blink" {  from, to {    color: transparent;  }  50% {    color: black;  }}
+
+#cursor {
+  font-family: Arial, sans-serif;
+  font-weight: 100;
+  margin-left: 5px;
+  font-size: 50px;
+  -webkit-animation: 2.2s blink step-end infinite;
+  -moz-animation: 2.2s blink step-end infinite;
+  -ms-animation: 2.2s blink step-end infinite;
+  -o-animation: 2.2s blink step-end infinite;
+  animation: 2.2s blink step-end infinite;
 }
 
 .btn-main, .btn-main:visited, .btn-main:focus {
@@ -49,13 +66,6 @@
     color: #0080FF;
     border: 5px solid #0080FF;
 }
-
-
-
-
-
-
-
 
 .btn-default {
   border: 1px solid #333;
