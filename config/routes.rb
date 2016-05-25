@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  
+  #User routes
+  get 'users/show'
   devise_for :users
+  
+  #navigational
   get 'welcome/index'
   
   root 'welcome#index'
