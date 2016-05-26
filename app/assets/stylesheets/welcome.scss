@@ -7,66 +7,28 @@
 .jumbotron {
   height: 950px;
   background-color: #000;
-  background-image: url(Landing9.jpg);
+  background-image: url(fantasy3.jpg);
   background-size: cover;
   margin-bottom: 0px;
 }
 
+
 .main {
   position: relative;
-  top: 180px;
+  top: 15px;
   text-align: center;
 }
 
 #jumbo-text {
-  color: #000;
-  font-family: 'Courier New', serif;
-  font-weight: 600;
-  letter-spacing: 2px;
-  font-size: 70px;
-  margin-top: 0;
-  margin-bottom: 80px;
-}
-
-@keyframes "blink" {  from, to {    color: transparent;  }  50% {    color: black;  }}
-@-moz-keyframes blink {  from, to {    color: transparent;  }  50% {    color: black;  }}
-@-webkit-keyframes "blink" {  from, to {    color: transparent;  }  50% {    color: black;  }}
-@-ms-keyframes "blink" {  from, to {    color: transparent;  }  50% {    color: black;  }}
-@-o-keyframes "blink" {  from, to {    color: transparent;  }  50% {    color: black;  }}
-
-#cursor {
-  font-family: Arial, sans-serif;
-  font-weight: 100;
-  margin-left: 5px;
-  font-size: 50px;
-  -webkit-animation: 2.2s blink step-end infinite;
-  -moz-animation: 2.2s blink step-end infinite;
-  -ms-animation: 2.2s blink step-end infinite;
-  -o-animation: 2.2s blink step-end infinite;
-  animation: 2.2s blink step-end infinite;
-}
-
-.btn-main, .btn-main:visited, .btn-main:focus {
-  transition: all 0.5s ease;
-  color: #000;
-  border: 5px solid #000;
+  color: #fff;
   font-family: 'Courier New', serif;
   font-weight: 900;
-  font-size: 18px;
-  letter-spacing: 1.3px;
-  padding: 16px 40px;
-  text-decoration: none;
-  text-transform: uppercase;
-  width: 25%;
-  margin: auto;
+  letter-spacing: 2px;
+  font-size: 90px;
+  margin-top: 0px;
+  margin-bottom: 30px;
 }
 
-.btn-main:hover, .btn-main:active {
-    text-decoration: none;
-    transition: all .75s ease;
-    color: #0080FF;
-    border: 5px solid #0080FF;
-}
 
 .btn-default {
   border: 1px solid #333;
@@ -78,4 +40,13 @@
   font-weight: 600;
   display: inline-block;
   letter-spacing: 1.3px;
+}
+
+@media screen and (max-width:950px) {
+    #jumbo-text { font-size: 45px; 
+                  color: #C4C4C4; }
+}
+
+@media screen and (max-width:575px) {
+    #jumbo-text { display:none; }
 }

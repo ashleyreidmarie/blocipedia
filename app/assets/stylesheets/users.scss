@@ -1,3 +1,127 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#user-sign-up {
+    background: rgba(0, 0, 0, 0.7);
+    max-width: 90%;
+    margin: auto;
+}
+
+
+
+#user-sign-up .mud-text {
+    text-align: justify;
+}
+
+#user-sign-up .box {
+    position: relative;
+    padding: 5px 10px 10px 10px;
+}
+
+#user-sign-up h2 {
+    color: #C4C4C4;
+    font-family: 'Courier New', serif;
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+    line-height: 100%;
+}
+
+.box .sword {
+    float: left;
+}
+
+.box .sword2 {
+    float: right;
+}
+
+.box .sword, .box .sword2 {
+    margin-bottom: 0px;
+    font-size: 17px;
+    color: #474747;
+}
+
+
+
+#user-sign-up .row {
+    clear: both;
+}
+
+#user-sign-up .form {
+    min-height: 100%;
+    margin: auto;
+}
+
+#user-sign-up .form-field {
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-family: 'Courier New', serif;
+    border: 0px solid black;
+    font-size: 18px;
+    float: none;
+    margin-right: 8%;
+    text-align: center;
+}
+
+#user-sign-up .form-label {
+    float: left;
+    clear: left;
+    color: #C0C0C0;
+    font-family: 'Courier New', serif;
+    text-align: left;
+}
+
+.create, .create:visited, .create:focus {
+  transition: all 0.5s ease;
+  border: 0px;
+  color: #C4C4C4;
+  background: none;
+  font-family: 'Courier New', serif;
+  font-size: 22px;
+  letter-spacing: 1.3px;
+  text-decoration: underline;
+  text-transform: uppercase;
+  width: 75%;
+  clear: both;
+  position: relative;
+  margin-top: 10px;
+}
+
+.create:hover, .create:active {
+    text-decoration: none;
+    transition: all .75s ease;
+    background: rgba(0, 128, 255, 0.9);
+    color: #fff;
+    width: 50%;
+}
+
+.form-field:focus, .submit:focus { 
+    transition: all 0.5s ease;
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+@media screen and (max-width:1200px) {
+    .box .sword, .box .sword2 { display: none; }
+    #user-sign-up .form-label { margin: auto;}
+}
+
+@media screen and (max-width:1000px) {
+    #user-sign-up .row { text-align: center; }
+    #user-sign-up .form-field { background: rgba(0, 0, 0, 0.7); 
+                                margin: 10px;
+                                text-align: center;    }
+}
+
+@media screen and (max-width:530px) {
+    #user-sign-up .mud-text { text-align: center;
+                              font-size: 120%;}
+    #user-sign-up .form-label { font-size: 120%; }
+    #user-sign-up .form-field { font-size: 120%; 
+                                box-shadow: 0 0 5px #719ECE; }
+}
