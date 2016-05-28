@@ -8,8 +8,6 @@
     margin: auto;
 }
 
-
-
 #user-sign-up .mud-text {
     text-align: justify;
 }
@@ -115,13 +113,13 @@
     #user-sign-up .row { text-align: center; }
     #user-sign-up .form-field { background: rgba(0, 0, 0, 0.7); 
                                 margin: 10px;
-                                text-align: center;    }
+                                text-align: center; 
+                                box-shadow: 0 0 5px #719ECE; }
 }
 
 @media screen and (max-width:530px) {
     #user-sign-up .mud-text { text-align: center;
                               font-size: 120%;}
     #user-sign-up .form-label { font-size: 120%; }
-    #user-sign-up .form-field { font-size: 120%; 
-                                box-shadow: 0 0 5px #719ECE; }
+    #user-sign-up .form-field { font-size: 120%; }
 }
