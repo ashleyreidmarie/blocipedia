@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   #               names.first.capitalize!
   #               self.username = names.join(' ') }
   
-  validates :username, length: { minimum: 2, maximum: 35 }, presence: true
+  validates :username, length: { minimum: 2, maximum: 35 }, presence: true, uniqueness: true
   
 end

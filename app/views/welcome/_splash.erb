@@ -2,51 +2,28 @@
   <div class="container"> 
     <div class="main">
       <h1 id="jumbo-text">Record Your Journey</h1>
-      <!--<%= link_to "Create Your Account", new_user_registration_path, class: "btn-main" %>-->
-      
       <div id="user-sign-up">
-        <div class="box">
-          <h2><span class="sword">ס₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞΞΞ></span>Create Your Account<span class="sword2"><ΞΞΞΞΞΞΞΞΞΞ≥≤≥≤≥≤Ξ)|§₪₪₪₪ס</span></h2>
-          <p class="mud-text">A man in a heavy hooded cloak approaches you slowly. As he arrives he surveys you carefuly, 
-          his face compeltely darkened by the shadows of his apparel. Abruptly alarmed, he grasps a dagger from within the folds
-          of his cloak. Crouching defensively, he scans the area for a threat before murmuring to you hastily... </p>
-
-          <div class="form">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
-              <div class="row">
-                <p class="form-label col-md-7 ">"By what name are you known, adventurer?"</p>
-                <%= f.text_field :username, autofocus: true, class: "form-field col-md-3", placeholder: "Username" %>
-              </div>
-              
-              <div class="row">
-                <p class="form-label col-md-7 ">"What mortal Email do you prefer?"</p>
-                <%= f.email_field :email, class: "form-field col-md-3", placeholder: "Email" %>
-              </div>
-              
-              
-              <div class="row">
-                <p class="form-label col-md-7 ">"Whisper your Password to me quickly!"</p>
-                <%= f.password_field :password, class: "form-field col-md-3", placeholder: "Password" %>
-              </div>
-              
-              <div class="row">
-                <p class="form-label col-md-7 ">"Are you sure that's correct?"</p>
-                <%= f.password_field :password, class: "form-field col-md-3", placeholder: "Confirm Password" %>
-              </div>
-              
-              <div class="submit">
-                <%= f.submit "Create", class: "create" %>
-              </div>
-            <% end %>
+        <% if user_signed_in? %>
+          <div class="box">
+              <h2><span class="sword">ס₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞΞΞ></span>Welcome, <%= current_user.username %>!<span class="sword2"><ΞΞΞΞΞΞΞΞΞΞ≥≤≥≤≥≤Ξ)|§₪₪₪₪ס</span></h2>
+              <p class="mud-text">A blinding light floods the area, and you lose sight of the cloaked man. You soon find yourself sprawled on ground made of fluffy, white clouds. You stand up, dazed, before noticing an enormous opening in the clouds close by. You peer over the edge to see the entire world below...</p>
           </div>
-
-        </div>
+        <% else %>
+            <div class="box">
+              <h2><span class="sword">ס₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞΞΞ></span>Create Your Account<span class="sword2"><ΞΞΞΞΞΞΞΞΞΞ≥≤≥≤≥≤Ξ)|§₪₪₪₪ס</span></h2>
+              <p class="mud-text">A man in a heavy hooded cloak approaches you slowly. As he arrives he surveys you carefuly, 
+              his face compeltely darkened by the shadows of his apparel. Abruptly alarmed, he grasps a dagger from within the folds
+              of his cloak. Crouching defensively, he scans the area for a threat before murmuring to you hastily... </p>
+          
+              <%= render :partial=> 'devise/sessions/sign_up', locals: {user: user} %>
+            </div>
+        <% end %>
       </div>
-        
     </div>
   </div>
 </div>
+
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6 text-center">

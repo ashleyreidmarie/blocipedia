@@ -1,0 +1,49 @@
+<div class="form">
+  <%= form_for(user, url: user_registration_path) do |f| %>
+
+    <div class="row">
+      <p class="form-label col-md-7 ">"By what name are you known, adventurer?"</p>
+      <%= f.text_field :username, autofocus: true, class: "form-field col-md-3", placeholder: "Username" %>
+      <% if user.errors.include?(:username) %>
+        <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("username", user.errors[:username]) %>"></span>
+      <% else %>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+      <% end %>      
+    </div>
+    
+    <div class="row">
+      <p class="form-label col-md-7 ">"What mortal Email do you prefer?"</p>
+      <%= f.email_field :email, class: "form-field col-md-3", placeholder: "Email" %>
+      <% if user.errors.include?(:email) %>
+        <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("email", user.errors[:email]) %>"></span>
+      <% else %>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+      <% end %>   
+    </div>
+    
+    
+    <div class="row">
+      <p class="form-label col-md-7 ">"Whisper your Password to me quickly!"</p>
+      <%= f.password_field :password, class: "form-field col-md-3", placeholder: "Password", autocomplete: "off" %>
+      <% if user.errors.include?(:password) %>
+        <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("password", user.errors[:password]) %>"></span>
+      <% else %>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+      <% end %> 
+    </div>
+    
+    <div class="row">
+      <p class="form-label col-md-7 ">"Are you sure that's correct?"</p>
+      <%= f.password_field :password_confirmation, class: "form-field col-md-3", placeholder: "Confirm Password", autocomplete: "off" %>
+      <% if user.errors.include?(:password_confirmation) %>
+        <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("password confirmation", user.errors[:password_confirmation]) %>"></span>
+      <% else %>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+      <% end %>   
+    </div>
+    
+    <div class="submit">
+      <%= f.submit "Create", class: "create" %>
+    </div>
+  <% end %>
+</div>

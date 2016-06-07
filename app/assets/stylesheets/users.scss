@@ -61,7 +61,7 @@
     border: 0px solid black;
     font-size: 18px;
     float: none;
-    margin-right: 8%;
+    width: auto;
     text-align: center;
 }
 
@@ -71,6 +71,18 @@
     color: #C0C0C0;
     font-family: 'Courier New', serif;
     text-align: left;
+}
+
+#user-sign-up .field_with_errors, #user-sign-up .field-container {
+    display: inline-block;
+}
+
+#user-sign-up .sign-up-error {
+    color: red;
+    font-size: 15px;
+    font-weight: normal;
+    text-shadow: 2px 2px #000;
+    opacity: .8;
 }
 
 .create, .create:visited, .create:focus {
@@ -103,6 +115,7 @@
     border-color: #719ECE;
     box-shadow: 0 0 10px #719ECE;
 }
+
 
 @media screen and (max-width:1200px) {
     .box .sword, .box .sword2 { display: none; }

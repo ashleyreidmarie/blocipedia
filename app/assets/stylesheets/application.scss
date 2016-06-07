@@ -47,17 +47,16 @@ body {
   float:right; 
 }
 
-.nav li {
+.nav li, .nav li a {
   color: #0080FF;
   font-family: "Lucida Console", Monaco, monospace;
   font-weight: 100;
-  letter-spacing: 1px;
+  letter-spacing: 0px;
   font-size: 16px;
   display: inline-block;
-  margin-left: 20px;
 }
 
-.nav li a:hover {
+.nav li a:hover, .nav li a:focus, .nav li a:visited  {
   background-color: #000;
   text-decoration: none;
 }
@@ -107,3 +106,41 @@ body {
     border-color: #719ECE;
     box-shadow: 0 0 10px #719ECE;
 }
+
+.alert {
+  position: fixed;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  margin: auto;
+  border: 1px solid #000;
+  font-family: 'Courier New', serif;
+  font-size: 18px;
+  margin: auto;
+  border-radius: 0px;
+  text-align: center;
+}
+
+.alerts .alert .close {
+  color: #0080FF;
+  opacity: .8;
+  text-shadow: none;
+}
+
+.alerts .success {
+  color: #008000;
+}
+
+.alerts .danger {
+  color: #FF0000;
+}
+
+.alerts .warning {
+  color: #FF00FF;
+}
+
+.sign-up-error {
+  display: inline-block;
+  color: red;
+}
+
