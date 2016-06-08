@@ -15,3 +15,9 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$("#site-intro-link").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#intro").offset().top
+    }, 2000);
+});

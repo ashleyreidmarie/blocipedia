@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.jumbotron {
-  height: 950px;
+#main-content .jumbotron {
+  height: 820px;
   background-color: #000;
   background-image: url(fantasy3.jpg);
   background-size: cover;
@@ -27,6 +27,9 @@
   font-size: 90px;
   margin-top: 0px;
   margin-bottom: 30px;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
 }
 
 
@@ -42,6 +45,69 @@
   letter-spacing: 1.3px;
 }
 
+.question-container {
+  height: 75px;
+}
+
+#site-intro-link:hover {
+  text-decoration: none;
+}
+
+.intro-question {
+  transition: all .75s ease;
+  background: #000;
+  color: #FFF;
+  width: 100%;
+  height: 100%;
+  line-height: 75px;
+  text-align: center;
+  font-family: 'Courier New', serif;
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+
+}
+
+.intro-question:hover {
+  transition: all 1.25s ease;
+  background: #121212;
+}
+
+.intro-question .mud-text {
+  font-size: inherit;
+}
+
+#intro {
+  background-color: #000;
+  height: 100%;
+  padding: 0px 20px;
+  margin: 0px;
+}
+
+#intro .content-seprator {
+  margin: 0 auto;
+  width: 99%;
+  padding: 5px;
+  border-top: 2px solid #800000;
+}
+
+#intro h1 {
+  text-transform: uppercase;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color: #C0C0C0;
+}
+
+#intro .text-box {
+  background: #000;
+  height: 300px;
+  width: 75%;
+  margin:0 auto;
+  box-shadow: -60px 0px 100px -90px #C0C0C0, 60px 0px 100px -90px #C0C0C0;
+  padding-top: 5%;
+  font-size: 20px;
+}
+
 @media screen and (max-width:950px) {
     #jumbo-text { font-size: 45px; 
                   color: #C4C4C4; }
@@ -50,3 +116,4 @@
 @media screen and (max-width:575px) {
     #jumbo-text { display:none; }
 }
+
