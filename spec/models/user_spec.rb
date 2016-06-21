@@ -30,4 +30,18 @@ RSpec.describe User, type: :model do
     
   end
   
+  describe 'validations' do
+    describe 'username' do
+      it "cannot contain an @" do
+        user.username = "asdfadsfasdf@asdfasdfasdf"
+        expect(user).to_not be_valid
+      end
+      
+      it "is valid with a valid username" do
+        user.username = "asdfadsfasdf"
+        expect(user).to be_valid
+      end
+    end
+  end
+  
 end
