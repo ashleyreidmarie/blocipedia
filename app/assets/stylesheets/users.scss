@@ -2,22 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#user-sign-up {
+#main-content-box {
     background: rgba(0, 0, 0, 0.7);
     max-width: 90%;
     margin: auto;
 }
 
-#user-sign-up .mud-text {
+#main-content-box .mud-text {
     text-align: justify;
 }
 
-#user-sign-up .box {
+#main-content-box .box {
     position: relative;
     padding: 5px 10px 10px 10px;
+    overflow: hidden;
 }
 
-#user-sign-up h2 {
+#main-content-box h2 {
     color: #C4C4C4;
     font-family: 'Courier New', serif;
     font-weight: 900;
@@ -45,16 +46,16 @@
 
 
 
-#user-sign-up .row {
+#main-content-box .row {
     clear: both;
 }
 
-#user-sign-up .form {
+#main-content-box .form {
     min-height: 100%;
     margin: auto;
 }
 
-#user-sign-up .form-field {
+#main-content-box .form-field {
     background: rgba(0, 0, 0, 0.2);
     color: #fff;
     font-family: 'Courier New', serif;
@@ -65,7 +66,7 @@
     text-align: center;
 }
 
-#user-sign-up .form-label {
+#main-content-box .form-label {
     float: left;
     clear: left;
     color: #C0C0C0;
@@ -73,11 +74,11 @@
     text-align: left;
 }
 
-#user-sign-up .field_with_errors, #user-sign-up .field-container {
+#main-content-box .field_with_errors, #main-content-box .field-container {
     display: inline-block;
 }
 
-#user-sign-up .sign-up-error {
+#main-content-box .sign-up-error {
     color: red;
     font-size: 15px;
     font-weight: normal;
@@ -116,23 +117,27 @@
     box-shadow: 0 0 10px #719ECE;
 }
 
+#main-content-box .verification {
+    margin-top: 12%;
+}
+
 
 @media screen and (max-width:1200px) {
     .box .sword, .box .sword2 { display: none; }
-    #user-sign-up .form-label { margin: auto;}
+    #main-content-box .form-label { margin: auto;}
 }
 
 @media screen and (max-width:1000px) {
-    #user-sign-up .row { text-align: center; }
-    #user-sign-up .form-field { background: rgba(0, 0, 0, 0.7); 
+    #main-content-box .row { text-align: center; }
+    #main-content-box .form-field { background: rgba(0, 0, 0, 0.7); 
                                 margin: 10px;
                                 text-align: center; 
                                 box-shadow: 0 0 5px #719ECE; }
 }
 
 @media screen and (max-width:530px) {
-    #user-sign-up .mud-text { text-align: center;
+    #main-content-box .mud-text { text-align: center;
                               font-size: 120%;}
-    #user-sign-up .form-label { font-size: 120%; }
-    #user-sign-up .form-field { font-size: 120%; }
+    #main-content-box .form-label { font-size: 120%; }
+    #main-content-box .form-field { font-size: 120%; }
 }

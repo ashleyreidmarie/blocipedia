@@ -1,25 +1,49 @@
-<h2>Change your password</h2>
+<div class="jumbotron">
+  <div class="container"> 
+    <div class="main">
+      <div id="main-content-box">
+        <div class="box verification">
+          <h2>Change your password</h2>
+          <p class="mud-text">...</p>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+            <div class="row">
+              <p class="form-label col-md-7 ">"What password do you prefer, adventurer?"</p>
+              <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-field col-md-3", placeholder: "New Password" %>
+              <% if @user.errors.include?(:reset_password_token) %>
+                <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("password", @user.errors[:reset_password_token]) %>"></span>
+              <% else %>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+              <% end %>   
+            </div>
+            
+            <div class="row">
+              <p class="form-label col-md-7 ">"Are you sure that's correct?"</p>
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-field col-md-3", placeholder: "Confirm New Password" %>
+              <% if @user.errors.include?(:reset_password_token) %>
+                <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("password_confirmation", @user.errors[:reset_password_token]) %>"></span>
+              <% else %>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+              <% end %>   
+            </div>
+            
+            <div class="submit">
+              <%= f.submit "Change", class: "create" %>
+            </div>
+          <% end %>
+          
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="sign-in-help" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Help
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" id="sign-in-dropdown" aria-labelledby="sign-in-help">
+              <%= render "devise/shared/links" %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

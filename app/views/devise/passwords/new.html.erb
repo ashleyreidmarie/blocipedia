@@ -1,16 +1,44 @@
-<h2>Forgot your password?</h2>
+<div class="jumbotron">
+  <div class="container"> 
+    <div class="main">
+      <div id="main-content-box">
+        <div class="box verification">
+          <h2>Retrieve Forgotten Password</h2>
+          <p class="mud-text">Darkness encompasses the area as you find yourself lost and alone. To your embarassment, you hear a chuckle from a man behind you as he comments on your disoriented state...</p>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+            <div class="row">
+              <p class="form-label col-md-7 ">"What Email are you using, adventurer?"</p>
+              <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-field col-md-3", placeholder: "Email" %>
+              <% if @user.errors.include?(:email) %>
+                <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("email", @user.errors[:email]) %>"></span>
+              <% else %>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+              <% end %>   
+            </div>
+            
+            <div class="submit">
+              <%= f.submit "Reset", class: "create" %>
+            </div>
+          <% end %>
+          
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="sign-in-help" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Help
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" id="sign-in-dropdown" aria-labelledby="sign-in-help">
+              <%= render "devise/shared/links" %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+
+
+

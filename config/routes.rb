@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   #User routes
   get 'users/show'
-  devise_for :users
+  devise_for :users, module: :users
   
   #navigational
   get 'welcome/index'

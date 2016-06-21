@@ -1,39 +1,81 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="jumbotron">
+  <div class="container"> 
+    <div class="main">
+      <div id="main-content-box">
+        <div class="box verification">
+          <h2>Edit account information</h2>
+          <p class="mud-text">...</p>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          
+            <div class="row">
+              <p class="form-label col-md-7 ">"By what name are you known, adventurer?"</p>
+              <%= f.text_field :username, autofocus: true, class: "form-field col-md-3", placeholder: "Username" %>
+              <% if @user.errors.include?(:username) %>
+                <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("username", @user.errors[:username]) %>"></span>
+              <% else %>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+              <% end %>      
+            </div>
+            
+            <div class="row">
+              <p class="form-label col-md-7 ">"What mortal Email do you prefer?"</p>
+              <%= f.email_field :email, class: "form-field col-md-3", placeholder: "Email" %>
+              <% if @user.errors.include?(:email) %>
+                <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("email", @user.errors[:email]) %>"></span>
+              <% else %>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+              <% end %>   
+            </div>
+            
+            
+            <div class="row">
+              <p class="form-label col-md-7 ">"What is the new Password you prefer?"</p>
+              <%= f.password_field :password, class: "form-field col-md-3", placeholder: "New Password", autocomplete: "off" %>
+              <% if @user.errors.include?(:password) %>
+                <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("password", @user.errors[:password]) %>"></span>
+              <% else %>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+              <% end %> 
+            </div>
+            
+            <div class="row">
+              <p class="form-label col-md-7 ">"Are you sure that's correct?"</p>
+              <%= f.password_field :password_confirmation, class: "form-field col-md-3", placeholder: "Confirm New Password", autocomplete: "off" %>
+              <% if @user.errors.include?(:password_confirmation) %>
+                <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("password confirmation", @user.errors[:password_confirmation]) %>"></span>
+              <% else %>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+              <% end %>   
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+            <div class="row">
+              <p class="form-label col-md-7 ">"What is your current password?"</p>
+              <%= f.password_field :current_password, autocomplete: "off", class: "form-field col-md-3", placeholder: "Current Password", autocomplete: "off" %>
+              <% if @user.errors.include?(:current_password) %>
+                <span class="glyphicon glyphicon-asterisk sign-up-error" data-toggle="popover" data-content="<%= user_error_messages("current password", @user.errors[:current_password]) %>"></span>
+              <% else %>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+              <% end %>   
+            </div>
+            
+            <div class="submit">
+              <%= f.submit "Change", class: "create" %>
+            </div>
+          <% end %>
+          
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="sign-in-help" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Help
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" id="sign-in-dropdown" aria-labelledby="sign-in-help">
+              <li class="link-text"><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %></li>
+              <li class="link-text"><%= link_to "Delete Account", registration_path(resource_name), data: { confirm: "This cannot be undone! Are you sure?" }, method: :delete %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

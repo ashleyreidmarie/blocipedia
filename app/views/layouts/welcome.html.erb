@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mudonymous</title>
+  <%= favicon_link_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover({
+            placement : 'right'
+        });
+    });
+  </script>
+</head>
+<body>
+  <div id="wrapper">
+    <div class="header">
+      <div class="container-fluid">
+        <div class="logo">
+          <%= link_to image_tag('Logo.png', height: '25'), root_path %>
+        </div>
+        <ul class="nav">
+            <% if user_signed_in? %>
+              <li><%= link_to current_user.username, users_show_path %></li>
+              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+              <!--<li><%= link_to 'Edit Profile', edit_user_registration_path %></li>-->
+            <% else %>
+              <li><%= link_to "Register", new_user_registration_path %></li>
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+            <% end %>
+        </ul>
+      </div>
+  
+    </div>
+  
+    <div id="main-content">
+      
+      <div class="alerts">
+        <% if flash[:notice] %>
+          <div class="alert success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash.now[:notice] %>
+          </div>
+        <% elsif flash.now[:alert] %>
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash.now[:alert] %>
+          </div>
+        <% elsif flash[:alert] %>
+          <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="jumbotron">
+        <div class="container"> 
+          <div class="main">
+            <h1 id="jumbo-text">Record Your Journey</h1>
+            <div id="main-content-box">
+              <% if user_signed_in? %>
+                <div class="box">
+                    <h2><span class="sword">ס₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞΞΞ></span>Welcome, <%= current_user.username %>!<span class="sword2"><ΞΞΞΞΞΞΞΞΞΞ≥≤≥≤≥≤Ξ)|§₪₪₪₪ס</span></h2>
+                    <p class="mud-text">A blinding light floods the area, and you lose sight of the cloaked man. You soon find yourself sprawled on ground made of fluffy, white clouds. You stand up, dazed, before noticing an enormous opening in the clouds close by. You peer over the edge to see the entire world below...</p>
+                </div>
+              <% else %>
+              
+                <%= yield %>
+                
+                
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <a href="#intro" id="site-intro-link">
+        <div class="question-container">
+          <p class="intro-question">What is <span class="mud-text">Mud</span>onymous?</p>
+        </div>
+      </a>
+      <div class="container-fluid" id="intro">
+        <hr class="content-seprator">
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <h1>Recreate the journey</h1>
+            <p class="text-box mud-text">Text</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <h1>Explore your world</h1>
+            <p class="text-box mud-text">Text</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <h1>Tell your story</h1>
+            <p class="text-box mud-text">Text</p>
+          </div>
+        </div>
+      </div>    
+  
+    </div>
+    <div id="footer">
+      <div>
+        <p>Mudonymous</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

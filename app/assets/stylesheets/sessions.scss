@@ -1,0 +1,34 @@
+#sign-in-help {
+    float: right;
+    position: relative;
+    background: transparent;
+    border: none;
+    color: #909090;
+    padding: 0px;
+    margin: 0px 0px 3px 0px;
+    font-family: 'Courier New', serif;
+}
+
+#sign-in-dropdown {
+    position: static;
+    float: right;
+    text-align: right;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+    clear: both;
+    margin: 0px;
+    padding: 0px;
+}
+
+#sign-in-dropdown .link-text a {
+    color: #C0C0C0;
+    font-family: 'Courier New', serif;
+    margin: 2px;
+    padding: 0px;
+}
+
+#sign-in-dropdown .link-text a:hover, #sign-in-dropdown .link-text a:focus, #sign-in-dropdown .link-text a:visited {
+    background-color: rgba(0, 0, 0, 0.2);
+}
