@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :wikis do
+   resources :pages
+  end
+
   authenticated :user do
     root 'welcome#index', as: :authenticated_root
   end

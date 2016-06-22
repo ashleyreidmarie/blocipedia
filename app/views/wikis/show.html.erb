@@ -1,0 +1,8 @@
+<h1>Wikis#show</h1>
+<h1><%= @wiki.title %></h1>
+
+<p><%= pluralize(@wiki.pages.count, 'page') %> on this wiki</p>
+<p><%= @wiki.body %></p>
+
+<p><%= link_to "Pages Index", wiki_pages_path(@wiki.id) %></p>
+
