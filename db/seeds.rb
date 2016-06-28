@@ -3,7 +3,8 @@
     User.create!(
         email: RandomData.random_email,
         password: RandomData.random_sentence,
-        username: RandomData.random_word
+        username: RandomData.random_word,
+        confirmed_at: Date.today
         )
 end
 users = User.all

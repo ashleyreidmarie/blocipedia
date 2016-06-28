@@ -36,11 +36,19 @@ class WikisController < ApplicationController
       flash[:notice] = "Wiki was updated successfully."
       redirect_to @wiki
     else
-      flash.now[:alert] = "Error updating wiki. Please try again."
+      flash.now[:alert] = "There was an error updating wiki. Please try again."
     end
   end
 
   def destroy
+    @wiki = Wiki.find(params[:id])
+    
+    if @wiki.destroy
+      flash[:notice] = "Wiki was successfully deleted."
+      redirect_to root_path
+    else
+      flash.now[:alert] = "There was an error deleting this wiki. Please try again."
+    end
   end
   
   
