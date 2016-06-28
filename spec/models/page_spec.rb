@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Page, type: :model do
     let(:user) { create(:user) }
     let(:wiki) { create(:wiki, user: user) }
-    let(:page) { create(:page, wiki:wiki) }
+    let(:page) { create(:page, wiki: wiki) }
     
     describe "attributes" do
        it "should have title and body attributes" do 

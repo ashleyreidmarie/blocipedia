@@ -34,7 +34,7 @@ RSpec.describe WikisController, type: :controller do
   
     describe "GET #edit" do
       it "returns http redirect" do
-        get :new
+        get :edit, {id: wiki.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -116,7 +116,7 @@ RSpec.describe WikisController, type: :controller do
         expect(response).to redirect_to(root_path)
       end
 
-      it "decreases the number of wikis by 1" do
+      it "removes the wiki" do
         delete :destroy, {id: wiki.id}
         expect(Wiki.count).to eq(0)
       end

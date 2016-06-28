@@ -1,2 +1,2 @@
-<h1>Pages#new</h1>
-<p>Find me in app/views/pages/new.html.erb</p>
+<h1 class="text-center">Create A New Page for <%= @wiki.name %></h1>
+<%= render partial: 'form', locals: { page: @page, wiki: @wiki } %>
