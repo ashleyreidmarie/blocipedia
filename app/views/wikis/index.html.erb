@@ -2,5 +2,5 @@
 <p>Total Wikis: <%= Wiki.count %></p>
 
 <% @wikis.each do |wiki| %>
-<p><%= link_to wiki.title, wiki_path(wiki.id) %></p>
+<p><%= link_to wiki.name, wiki_path(wiki.id) %></p>
 <% end %>

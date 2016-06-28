@@ -2,3 +2,4 @@
 <% @pages.each do |page| %>
 <p><%= link_to page.title, wiki_page_path(@wiki.id, page.id) %></p>
 <% end %>
+<p><%= link_to "Wiki Home", wiki_path(@wiki.id) %></p>

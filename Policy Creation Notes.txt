@@ -1,0 +1,107 @@
+def policy(model)
+    if model.class == Class
+        policy_name = model.to_s
+    else
+        policy_name = model.class.to_s"
+    end
+    #{policy_name}Policy".constantize.new(current_user, model)
+    # ThingPolicy
+end
+
+def authorize(model)
+    # 'create?'
+    raise NotAuthorziedError unless policy(model).send("#{action_name}?")
+end
+
+
+
+
+def default_action
+    render "#{controller_name}/#{action_name}.html.erb"
+end
+
+
+
+class ThingsController
+    rescue_from(NotAuthorizedError) do
+        redirct_to :back, error: "not allowed"
+    end
+    
+    def index
+        authorize(Thing)
+        things = policy_scope(Thing)
+    end
+
+    def create
+        thing = Thing.new(...)
+        authorize(thing)
+        create_thing
+    end
+    
+    def destroy
+        thing = Thing.find(...)
+        authorize(thing)
+        destroy_thing
+    end
+end
+
+
+
+
+
+
+
+policies/thing_policy.rb
+class ThingPolicy
+    attr_reader :current_user, :thing
+
+    def initialization(current_user, thing)
+        @current_user = current_user
+        @thing = thing
+    end
+    
+    def index
+        true
+    end
+
+    def create?
+      current_user.role == 'admin'
+    end
+    
+    def destroy?
+      current_user.role == 'admin' || thing.owner == current_user
+    end
+end
+
+policies/thing_policy/scope.rb
+class ThingPolicy
+    class Scope
+        attr_reader :user, :scope
+    
+        def initialize(user, scope)
+            @user  = user
+            @scope = scope
+        end
+    
+        def resolve
+            if user.admin?
+                scope.all
+            else
+                scope.where(published: true)
+            end
+        end
+    end
+end
+
+
+
+things/index.html.erb
+
+<% if policy(thing).create? %>
+    <%= button_to create_thing %>
+<% end %>
+
+<% if policy(thing).destroy? %>
+    <%= button_to destroy_thing %>
+<% end %>
+

@@ -1,0 +1,62 @@
+class CollaborationsController
+    # params = {user_id: 1234, wiki_id: 2345}
+    def create
+        user = User.find(params[:user_id])
+        wiki = Wiki.find(params[:wiki_id])
+        collaboration = Collaboration.new(user: user, wiki: wiki)
+        authorize(collaboration)
+        collaboration.save
+    end
+    
+    # params = {wiki_id: 5}
+    def index
+        @wiki = Wiki.find(params[:wiki_id])
+    end
+end
+
+
+class CollaborationPolicy
+    attr_reader :current_user, :collaboration
+
+    def initialize(current_user, collaboration)
+        @current_user = current_user
+        @collaboration = collaboration
+    end
+
+    def create?
+        requester_collaboration = Collaboration.find_by(user: current_user, wiki: collaboration.wiki)
+        current_user.admin? || (requester_collaboration.present? && (requester_collaborator.admin? || requester_collaboration.owner?))
+    end
+end
+
+
+
+GET     /wikis/5                wikis#show
+GET     /wikis/5/edit           wikis#edit
+GET     /wikis/5/collaborations collaborations#index
+
+
+
+
+collaborations/index
+
+<% @wiki.collaborations do |collaboration| %>
+    <%= collaboration.user.name %>
+    <% if policy(collaboration).destroy? %>
+        <%= button_to "remove as collaborator", delete_collaborator %>
+        
+
+
+User
+    has_many :collaborations
+    has_many :wiki, through: collaborations
+    
+Collaboration
+    belongs_to :user
+    belongs_to :wiki
+    role #[:owner, :admin, :editor, :viewer]
+    
+Wiki
+    has_many: collaborations
+    has_many :users, through :collaborations
+    

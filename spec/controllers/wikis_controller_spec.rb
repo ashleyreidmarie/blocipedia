@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe WikisController, type: :controller do
-  let(:user) { create(:user) }
-  let(:wiki) { create(:wiki, user: user) }
+  let(:wiki) { create(:wiki) }
+
+
+context "logged in user" do
+  login_user
 
   describe "GET #index" do
     it "returns http success" do
@@ -31,5 +34,6 @@ RSpec.describe WikisController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
+end
 
 end

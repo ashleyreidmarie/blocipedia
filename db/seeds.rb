@@ -11,8 +11,8 @@ users = User.all
 #Seed Wikis
 10.times do
     Wiki.create!(
-        title: RandomData.random_sentence,
-        body: RandomData.random_paragraph,
+        name: RandomData.random_sentence,
+        description: RandomData.random_paragraph,
         user: users.sample
         )
 end
