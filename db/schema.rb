@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622025217) do
+ActiveRecord::Schema.define(version: 20160630215249) do
+
+  create_table "muds", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.boolean  "verified",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "muds", ["name"], name: "index_muds_on_name"
 
   create_table "pages", force: :cascade do |t|
     t.string   "title"
@@ -59,8 +69,10 @@ ActiveRecord::Schema.define(version: 20160622025217) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "mud_id"
   end
 
+  add_index "wikis", ["mud_id"], name: "index_wikis_on_mud_id"
   add_index "wikis", ["user_id"], name: "index_wikis_on_user_id"
 
 end

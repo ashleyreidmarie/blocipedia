@@ -4,9 +4,14 @@ RSpec.describe Wiki, type: :model do
     let(:user) { create(:user) }
     let(:wiki) { create(:wiki, user: user) }
   
+    #Validation testing
+    it { is_expected.to belong_to(:mud) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:pages) }
+    
     describe "attributes" do
      it "should have name and description attributes" do
-       expect(wiki).to have_attributes(name: wiki.name, description: wiki.description, user: wiki.user, private: wiki.private)
+       expect(wiki).to have_attributes(name: wiki.name, description: wiki.description, private: wiki.private)
      end
     end
   
