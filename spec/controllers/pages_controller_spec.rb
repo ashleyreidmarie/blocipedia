@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe PagesController, type: :controller do
-
-  let(:wiki) { create(:wiki) }
+  let(:user) {create(:user) }
+  let(:mud) {create(:mud) }
+  let(:wiki) { create(:wiki, mud: mud, user: user) }
   let(:page) { create(:page, wiki: wiki) }
 
 

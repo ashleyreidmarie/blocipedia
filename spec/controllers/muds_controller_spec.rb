@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe MudsController, type: :controller do
-  let(:mud) { create(:mud) }
-  let(:wiki) { create(:wiki) }
+  let(:user) {create(:user) }
+  let(:mud) {create(:mud) }
+  let(:wiki) { create(:wiki, mud: mud, user: user) }
 
   context "guest user" do
     describe "GET #index" do

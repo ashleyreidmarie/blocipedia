@@ -20,7 +20,7 @@ RSpec.describe Mud, type: :model do
   context "scopes" do
     before do
       @unapproved_mud = create(:mud)
-      @approved_mud = create(:mud, approved: true)
+      @approved_mud = create(:mud, name: Faker::App.name, approved: true)
     end
     
     describe "approved" do

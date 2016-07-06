@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe WikisController, type: :controller do
-  let(:wiki) { create(:wiki) }
+  let(:user) {create(:user) }
+  let(:mud) {create(:mud) }
+  let(:wiki) { create(:wiki, mud: mud, user: user) }
 
   context "guest user" do
     describe "GET #index" do
@@ -84,12 +86,12 @@ RSpec.describe WikisController, type: :controller do
   
     describe "POST create" do
       it "returns http redirect" do
-        post :create, wiki: {name: RandomData.random_sentence, description: RandomData.random_paragraph}
+        post :create, wiki: {name: Faker::App.name, description: Faker::Hipster.paragraph, user: user, mud: mud}
         expect(response).to redirect_to(wiki_path(id: Wiki.last.id))
       end
 
       it "increases the number of wikis by 1" do
-        expect{ post :create, wiki: {name: RandomData.random_sentence, description: RandomData.random_paragraph} }.to change(Wiki,:count).by(1)
+        expect{ post :create, wiki: {name: Faker::App.name, description: Faker::Hipster.paragraph, user: user, mud: mud} }.to change(Wiki,:count).by(1)
       end
     end
   
@@ -102,10 +104,10 @@ RSpec.describe WikisController, type: :controller do
     
     describe "PUT update" do
       it "returns http redirect" do
-        new_name = RandomData.random_sentence
-        new_description = RandomData.random_paragraph
+        new_name = Faker::App.name
+        new_description =  Faker::Hipster.paragraph
 
-        put :update, id: wiki.id, wiki: {name: new_name, description: new_description}
+        put :update, id: wiki.id, wiki: {name: new_name, description: new_description, mud: mud}
         expect(response).to redirect_to(wiki_path(id: wiki.id))
       end
     end
