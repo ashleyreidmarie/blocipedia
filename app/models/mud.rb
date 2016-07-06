@@ -12,9 +12,9 @@ class Mud < ActiveRecord::Base
 end
 
 
-# Mud.verified
+# Mud.approved
 # form_for Wiki.new do |f|
-#   f.collection_select(:mud_id, Mud.verified, :id, :name)
+#   f.collection_select(:mud_id, Mud.approved, :id, :name)
 
 # class MudsController
 #       def create

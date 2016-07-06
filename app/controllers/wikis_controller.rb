@@ -10,6 +10,7 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new(wiki_params)
+    @wiki.user = current_user
     
     if @wiki.save
       redirect_to @wiki, notice: "Wiki was saved successfully"
@@ -54,7 +55,7 @@ class WikisController < ApplicationController
   private
   
   def wiki_params
-    params.require(:wiki).permit(:name, :description)
+    params.require(:wiki).permit(:name, :description, :mud_id)
   end
   
 end

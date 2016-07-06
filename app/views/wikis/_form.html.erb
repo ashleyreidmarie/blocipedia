@@ -1,6 +1,6 @@
 <%= form_for wiki do |f| %>
   <% if wiki.errors.any? %>
-    <div class="alert alert-danger">
+    <div>
       <h4><%= pluralize(wiki.errors.count, "error") %></h4>
       <ul>
         <% wiki.errors.full_messages.each do |msg| %>
@@ -9,6 +9,10 @@
       </ul>
     </div>
   <% end %>
+  <div class="form-group">
+      <%= f.label :mud %>
+      <%= f.collection_select(:mud_id, Mud.approved, :id, :name) %>
+  </div>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control', placeholder: "Wiki's Name" %>
@@ -19,4 +23,9 @@
   </div>
   
   <%= f.submit "Save", class: 'btn btn-success' %>
+<% end %>
+
+<p>params</p>
+<% params.each do |param| %>
+  <%= p param %>
 <% end %>

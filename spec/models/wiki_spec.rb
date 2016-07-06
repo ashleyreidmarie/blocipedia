@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Wiki, type: :model do
     let(:user) { create(:user) }
-    let(:wiki) { create(:wiki, user: user) }
+    let(:mud) {create(:mud) }
+    let(:wiki) { create(:wiki, user: user, mud: mud) }
   
     #Validation testing
     it { is_expected.to belong_to(:mud) }
