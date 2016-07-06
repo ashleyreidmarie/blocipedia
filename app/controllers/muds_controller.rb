@@ -2,7 +2,7 @@ class MudsController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
   
   def index
-    @muds = Mud.all
+    @muds = Mud.approved
   end
 
   def show
@@ -55,7 +55,7 @@ class MudsController < ApplicationController
   private
   
   def mud_params
-    params.require(:mud).permit(:name, :url, :verified)
+    params.require(:mud).permit(:name, :url, :approved)
   end
   
 end

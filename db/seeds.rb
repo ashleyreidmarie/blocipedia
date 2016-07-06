@@ -24,14 +24,14 @@ users = User.all
    Mud.create!(
        name: RandomData.random_title,
        url: "https://www.google.com/",
-       verified: true
+       approved: true
        ) 
 end
 
 Mud.create!(
    name: "Lusternia, Age of Ascension",
    url: "http://www.lusternia.com/",
-   verified: true
+   approved: true
    )
    
 muds = Mud.all

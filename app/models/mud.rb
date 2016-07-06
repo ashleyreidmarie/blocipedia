@@ -1,8 +1,8 @@
 class Mud < ActiveRecord::Base
-    has_many :wikis
+    has_many :wikis, dependent: :destroy
     
-    scope :approved, ->{where(verified: true)}
-    scope :unapproved, ->{where(verified: false)}
+    scope :approved, ->{where(approved: true)}
+    scope :unapproved, ->{where(approved: false)}
     
     # validate do
     #     URI::parse(self.url)
@@ -12,9 +12,9 @@ class Mud < ActiveRecord::Base
 end
 
 
-# Mud.approved
+# Mud.verified
 # form_for Wiki.new do |f|
-#   f.collection_select(:mud_id, Mud.approved, :id, :name)
+#   f.collection_select(:mud_id, Mud.verified, :id, :name)
 
 # class MudsController
 #       def create
