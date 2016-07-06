@@ -1,9 +1,14 @@
-<h1>Wikis#show</h1>
 <h1><%= @wiki.name %></h1>
-
 <p><%= pluralize(@wiki.pages.count, 'page') %> on this wiki</p>
 <p><%= @wiki.description %></p>
+<hr />
 
+<% @wiki.pages.each do |page| %>
+    <p><%= link_to page.title, wiki_page_path(@wiki.id, page.id) %></p>
+<% end %>
 
-
-<p><%= link_to "Edit Wiki", edit_wiki_path(id: @wiki.id) %> | <%= link_to "Pages Index", wiki_pages_path(@wiki.id) %> | <%= link_to "Delete Wiki", @wiki, method: :delete, data: {confirm: 'Are you sure you want to delete this wiki?'} %></p>
+<hr />
+<p><%= link_to "Edit Wiki", edit_wiki_path(id: @wiki.id) %> | 
+<%= link_to "New Wiki Page", new_wiki_page_path(@wiki.id) %> | 
+<%= link_to "Delete Wiki", @wiki, method: :delete, data: {confirm: 'Are you sure you want to delete this wiki and all its pages?'} %></p>
+<p><%= link_to "Back to #{@wiki.mud.name}", @wiki.mud %></p>

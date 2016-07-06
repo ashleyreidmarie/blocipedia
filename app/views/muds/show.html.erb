@@ -1,0 +1,7 @@
+<h1><%= @mud.name %></h1>
+<p><%= link_to "Delete", @mud, method: :delete, data: {confirm: 'Are you sure you want to delete this MUD?'} %> </p>
+<hr />
+<% @mud.wikis.each do |wiki| %>
+  <p><%= link_to wiki.name, wiki_path(wiki.id) %></p>
+<% end %>
+<hr />

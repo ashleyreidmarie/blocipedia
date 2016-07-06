@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :muds
+
   resources :wikis do
    resources :pages
   end

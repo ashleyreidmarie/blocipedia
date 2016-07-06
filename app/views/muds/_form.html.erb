@@ -1,0 +1,27 @@
+<%= form_for mud do |f| %>
+  <% if mud.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(mud.errors.count, "error") %></h4>
+      <ul>
+        <% mud.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control', placeholder: "Name" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :url %>
+    <%= f.url_field :url, class: 'form-control', placeholder: "URL" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :verified, class: 'checkbox' do %>
+      <%= f.check_box :verified %> Verified MUD
+    <% end %>
+  </div>
+  
+  <%= f.submit "Submit", class: 'btn btn-success' %>
+<% end %>

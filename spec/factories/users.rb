@@ -1,8 +1,8 @@
 FactoryGirl.define do
-  pw = RandomData.random_sentence
+  pw = Faker::Internet.password(8)
   
   factory :user do
-     username RandomData.random_username
+     username Faker::Name.name
      email { Faker::Internet.email }
      password pw
      password_confirmation pw

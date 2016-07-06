@@ -4,5 +4,6 @@ FactoryGirl.define do
     description "MyText"
     private false
     user nil
+    mud nil
   end
 end
