@@ -1,6 +1,6 @@
 <%= form_for mud do |f| %>
   <% if mud.errors.any? %>
-    <div class="alert alert-danger">
+    <div>
       <h4><%= pluralize(mud.errors.count, "error") %></h4>
       <ul>
         <% mud.errors.full_messages.each do |msg| %>

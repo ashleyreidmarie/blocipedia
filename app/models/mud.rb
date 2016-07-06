@@ -1,6 +1,8 @@
 class Mud < ActiveRecord::Base
     has_many :wikis, dependent: :destroy
     
+    before_save { self.name[0] = self.name[0].upcase }
+    
     #Mud scopes
     default_scope { order('name') } 
     scope :approved, ->{where(approved: true)}
@@ -11,11 +13,7 @@ class Mud < ActiveRecord::Base
       length: { minimum: 2, maximum: 100 }, 
       presence: true, 
       uniqueness: true, 
-      format: {message: 'cannot contain special characters', without: /[@]/}
+      format: {message: 'cannot contain special characters', without: /[@.\\\/+*?\[^\]$(){}=!<>|:-]/}
       
-    # validate do
-    #     URI::parse(self.url)
-    # rescue URI::InvalidURIError
-    #     errors.add(:url, "must be valid url")
-    # end
+    validates :url, presence: true, uniqueness: true, :url => true
 end

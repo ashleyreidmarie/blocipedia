@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
   describe 'validations' do
     describe 'username' do
       it "cannot contain an @" do
-        user.username = "asdfadsfasdf@asdfasdfasdf"
+        user.username = "asdf@asdf"
         expect(user).to_not be_valid
       end
       
