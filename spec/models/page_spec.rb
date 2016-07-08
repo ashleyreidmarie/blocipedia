@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Page, type: :model do
     let(:user) { create(:user) }
-    let(:wiki) { create(:wiki, user: user) }
+    let(:mud)  { create(:mud) }
+    let(:wiki) { create(:wiki, user: user, mud: mud) }
     let(:page) { create(:page, wiki: wiki) }
     
     describe "attributes" do

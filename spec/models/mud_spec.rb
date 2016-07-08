@@ -30,7 +30,7 @@ RSpec.describe Mud, type: :model do
     before do
       @unapproved_mud = create(:mud)
       @approved_mud = create(:mud, 
-                              name: Faker::App.name, 
+                              name: Faker::Name.name, 
                               approved: true, 
                               url: Faker::Internet.url)
     end
