@@ -29,7 +29,7 @@ RSpec.describe MudsController, type: :controller do
     
     describe "POST create" do
       it "returns http redirect" do
-        post :create, mud: {name: Faker::App.name, url: Faker::Internet.url}
+        post :create, mud: {name: Faker::Name.first_name, url: Faker::Internet.url}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -43,7 +43,7 @@ RSpec.describe MudsController, type: :controller do
     
     describe "PUT update" do
       it "returns http redirect" do
-        new_name = Faker::App.name
+        new_name = Faker::Name.first_name
         new_url = Faker::Internet.url
 
         put :update, id: mud.id, mud: {name: new_name, url: new_url }
@@ -85,12 +85,12 @@ RSpec.describe MudsController, type: :controller do
     
     describe "POST create" do
       it "returns http redirect" do
-        post :create,  mud: {name: Faker::App.name, url: Faker::Internet.url}
+        post :create,  mud: {name: Faker::Name.first_name, url: Faker::Internet.url}
         expect(response).to redirect_to(mud_path(id: Mud.last.id))
       end
 
       it "increases the number of muds by 1" do
-        expect{ post :create, mud: {name: Faker::App.name, url: Faker::Internet.url} }.to change(Mud,:count).by(1)
+        expect{ post :create, mud: {name: Faker::Name.first_name, url: Faker::Internet.url} }.to change(Mud,:count).by(1)
       end
     end
   
@@ -103,7 +103,7 @@ RSpec.describe MudsController, type: :controller do
     
     describe "PUT update" do
       it "returns http redirect" do
-        new_name = Faker::App.name
+        new_name = Faker::Name.first_name
         new_url = Faker::Internet.url
 
         put :update, id: mud.id, mud: {name: new_name, url: new_url}

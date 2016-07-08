@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :mud do
-    name Faker::App.name
+    name Faker::Name.first_name
     url Faker::Internet.url
     approved false
   end

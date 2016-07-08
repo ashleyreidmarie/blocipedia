@@ -86,12 +86,12 @@ RSpec.describe WikisController, type: :controller do
   
     describe "POST create" do
       it "returns http redirect" do
-        post :create, wiki: {name: Faker::App.name, description: Faker::Hipster.paragraph, mud_id: mud.id}
+        post :create, wiki: {name: Faker::Name.first_name, description: Faker::Hipster.paragraph, mud_id: mud.id}
         expect(response).to redirect_to(wiki_path(id: Wiki.last.id))
       end
 
       it "increases the number of wikis by 1" do
-        expect{ post :create, wiki: {name: Faker::App.name, description: Faker::Hipster.paragraph, mud_id: mud.id} }.to change(Wiki,:count).by(1)
+        expect{ post :create, wiki: {name: Faker::Name.first_name, description: Faker::Hipster.paragraph, mud_id: mud.id} }.to change(Wiki,:count).by(1)
       end
     end
   
@@ -104,7 +104,7 @@ RSpec.describe WikisController, type: :controller do
     
     describe "PUT update" do
       it "returns http redirect" do
-        new_name = Faker::App.name
+        new_name = Faker::Name.first_name
         new_description =  Faker::Hipster.paragraph
 
         put :update, id: wiki.id, wiki: {name: new_name, description: new_description, mud: mud}
