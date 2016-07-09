@@ -1,7 +1,7 @@
 class Mud < ActiveRecord::Base
     has_many :wikis, dependent: :destroy
     
-    before_save { self.name[0] = self.name[0].upcase }
+    before_save { self.name[0] = self.name[0].upcase if self.name }
     
     #Mud scopes
     default_scope { order('name') } 
