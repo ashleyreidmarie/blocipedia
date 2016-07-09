@@ -29,7 +29,7 @@ RSpec.describe WikisController, type: :controller do
     
     describe "POST create" do
       it "returns http redirect" do
-        post :create, wiki: {name: RandomData.random_sentence, description: RandomData.random_paragraph}
+        post :create, wiki: {name: Faker::Name.first_name, description: Faker::Hipster.paragraph}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -43,7 +43,7 @@ RSpec.describe WikisController, type: :controller do
     
     describe "PUT update" do
       it "returns http redirect" do
-        new_name = RandomData.random_sentence
+        new_name = Faker::Name.first_name
         new_description = RandomData.random_paragraph
 
         put :update, id: wiki.id, wiki: {name: new_name, description: new_description }
@@ -61,7 +61,7 @@ RSpec.describe WikisController, type: :controller do
 
 
   context "logged in user" do
-    login_user
+    before { sign_in(user) }
   
     describe "GET #index" do
       it "returns http success" do

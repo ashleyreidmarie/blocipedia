@@ -31,7 +31,7 @@ RSpec.describe PagesController, type: :controller do
     
     describe "POST create" do
       it "returns http redirect" do
-        post :create, wiki_id: wiki.id, page: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
+        post :create, wiki_id: wiki.id, page: {title: Faker::Commerce.product_name, body: Faker::Hipster.paragraph}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -45,10 +45,8 @@ RSpec.describe PagesController, type: :controller do
     
     describe "PUT update" do
       it "returns http redirect" do
-        new_title = RandomData.random_sentence
-        new_body = RandomData.random_paragraph
-
-        put :update, wiki_id: wiki.id, id: page.id, page: {name: new_title, description: new_body }
+        
+        put :update, wiki_id: wiki.id, id: page.id, page: {name: Faker::Commerce.product_name, body: Faker::Hipster.paragraph }
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -63,7 +61,7 @@ RSpec.describe PagesController, type: :controller do
 
 
   context "logged in user" do
-    login_user
+    before { sign_in(user) }
   
     describe "GET #index" do
       it "returns http success" do
@@ -88,12 +86,12 @@ RSpec.describe PagesController, type: :controller do
   
     describe "POST create" do
       it "returns http redirect" do
-        post :create, wiki_id: wiki.id, page: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
+        post :create, wiki_id: wiki.id, page: {title: Faker::Commerce.product_name, body: Faker::Hipster.paragraph}
         expect(response).to redirect_to(wiki_page_path(wiki_id: wiki.id, id: wiki.pages.last.id))
       end
 
       it "increases the number of pages by 1" do
-        expect{ post :create, wiki_id: wiki.id, page: {title: RandomData.random_sentence, body: RandomData.random_paragraph} }.to change(Page,:count).by(1)
+        expect{ post :create, wiki_id: wiki.id, page: {title: Faker::Commerce.product_name, body: Faker::Hipster.paragraph} }.to change(Page,:count).by(1)
       end
     end
   
@@ -106,10 +104,10 @@ RSpec.describe PagesController, type: :controller do
     
     describe "PUT update" do
       it "returns http redirect" do
-        new_name = RandomData.random_sentence
-        new_description = RandomData.random_paragraph
+        new_name = Faker::Commerce.product_name
+        new_body = Faker::Hipster.paragraph
 
-        put :update, wiki_id: wiki.id, id: page.id, page: {title: new_name, body: new_description}
+        put :update, wiki_id: wiki.id, id: page.id, page: {title: new_name, body: new_body}
         expect(response).to redirect_to(wiki_page_path(wiki_id: wiki.id, id: page.id))
       end
     end
