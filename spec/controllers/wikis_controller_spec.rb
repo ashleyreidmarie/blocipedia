@@ -61,7 +61,7 @@ RSpec.describe WikisController, type: :controller do
 
 
   context "logged in user" do
-    login_user
+    before { sign_in(user) }
   
     describe "GET #index" do
       it "returns http success" do
