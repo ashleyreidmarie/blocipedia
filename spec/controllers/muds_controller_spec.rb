@@ -60,7 +60,7 @@ RSpec.describe MudsController, type: :controller do
   end
  
   context "logged in user" do
-    login_user
+      login_user
 
     describe "GET #index" do
       it "returns http success" do

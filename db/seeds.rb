@@ -1,16 +1,17 @@
 #Seed Users
 15.times do
+    u = Faker::Name.first_name
     User.create!(
-        email: RandomData.random_email,
-        password: RandomData.random_sentence,
-        username: RandomData.random_word,
+        username: u,
+        email: Faker::Internet.safe_email(u),
+        password: Faker::Internet.password(6, 15),
         confirmed_at: Date.today
         )
 end
 
 #Test user
 User.create!(
-    email: RandomData.random_email,
+    email: Faker::Internet.safe_email,
     password: "helloworld",
     username: "Marie",
     confirmed_at: Date.today
@@ -22,8 +23,8 @@ users = User.all
 #Seed Muds
 5.times do
    Mud.create!(
-       name: RandomData.random_title,
-       url: "https://www.google.com/",
+       name: Faker::Company.name,
+       url: Faker::Internet.url,
        approved: true
        ) 
 end
@@ -37,10 +38,10 @@ Mud.create!(
 muds = Mud.all
 
 #Seed Wikis
-10.times do
+20.times do
     Wiki.create!(
-        name: RandomData.random_title,
-        description: RandomData.random_paragraph,
+        name: Faker::Book.title,
+        description: Faker::Hipster.paragraph,
         user: users.sample,
         mud: muds.sample
         )
@@ -56,8 +57,8 @@ wikis = Wiki.all
 #Seed wiki Pages
 50.times do
    Page.create!(
-       title: RandomData.random_title,
-       body: RandomData. random_paragraph,
+       title: Faker::Commerce.product_name,
+       body: Faker::Hipster.paragraph,
        wiki: wikis.sample
        ) 
 end
