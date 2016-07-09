@@ -2,7 +2,6 @@ module ControllerMacros
   def login_user(user = FactoryGirl.create(:user))
     # before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      user.confirm
       sign_in user
     # end
   end
