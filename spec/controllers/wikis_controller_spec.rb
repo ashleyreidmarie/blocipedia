@@ -44,7 +44,7 @@ RSpec.describe WikisController, type: :controller do
     describe "PUT update" do
       it "returns http redirect" do
         new_name = Faker::Name.first_name
-        new_description = RandomData.random_paragraph
+        new_description = Faker::Hipster.paragraph
 
         put :update, id: wiki.id, wiki: {name: new_name, description: new_description }
         expect(response).to redirect_to(new_user_session_path)
