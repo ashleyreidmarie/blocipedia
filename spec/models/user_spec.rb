@@ -23,9 +23,9 @@ RSpec.describe User, type: :model do
     end
     
     it "should only capitalizes the first letter in username" do
-       user.username = "test user"
+       user.username = "testuser"
        user.save
-       expect(user.username).to eq "Test user"
+       expect(user.username).to eq "Testuser"
     end
     
   end
@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
   describe 'validations' do
     describe 'username' do
       it "cannot contain an @" do
-        user.username = "asdfadsfasdf@asdfasdfasdf"
+        user.username = "asdf@asdf"
         expect(user).to_not be_valid
       end
       

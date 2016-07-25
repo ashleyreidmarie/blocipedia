@@ -1,0 +1,6 @@
+<h1><%= @mud.name %></h1>
+<hr />
+<% @mud.wikis.each do |wiki| %>
+  <p><%= link_to wiki.name, wiki_path(wiki.id) %></p>
+<% end %>
+<hr />

@@ -22,6 +22,7 @@
  gem 'figaro'
  gem 'pry'
  gem 'devise'
+ gem "validate_url"
 
  group :development, :test do
    gem 'byebug'

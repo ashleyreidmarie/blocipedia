@@ -1,0 +1,12 @@
+<h1>MUDs</h1>
+<p>Total MUDs: <%= @muds.count %></p>
+<hr />
+
+<% @muds.each do |mud| %>
+<p><%= link_to mud.name, mud_path(mud.id) %> | <%= pluralize(mud.wikis.count, 'wiki') %> for this MUD</p>
+<% end %>
+
+<hr />
+
+<p><%= link_to "New MUD Request", new_mud_path %></p>
+

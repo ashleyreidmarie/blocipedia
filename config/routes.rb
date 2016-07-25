@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
   
+  #Mud routes
+  resources :muds do
+    collection do
+        get :dashboard
+    end
+    
+    member do
+        post :approval
+    end
+  end
+
+  resources :wikis do
+   resources :pages
+  end
+
   authenticated :user do
     root 'welcome#index', as: :authenticated_root
   end

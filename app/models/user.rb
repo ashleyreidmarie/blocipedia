@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, 
          :validatable, :confirmable, :lockables
   
-  before_save { self.username[0] = self.username[0].upcase }
+  before_save { self.username[0] = self.username[0].upcase if self.username }
   
-  validates :username, length: { minimum: 2, maximum: 35 }, presence: true, uniqueness: true, format: {message: 'cannot contain special characters', without: /[@]/}
+  validates :username, length: { minimum: 2, maximum: 35 }, presence: true, uniqueness: true, format: {message: 'cannot contain special characters', without: /[@\\\/+*?\[^\]$(){}=!<>|:\s]/}
   
   attr_accessor :username_or_email
   

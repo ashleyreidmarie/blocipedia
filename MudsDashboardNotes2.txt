@@ -1,0 +1,37 @@
+class MudsController
+    # params = {id: 5, mud: {approved: true}}
+    def update
+        @mud = Mud.find(params[:id])
+        authorize(@mud)
+        @mud.update(mud_params)
+    end
+    
+    # params = {id: 5}
+    def approval
+        @mud = Mud.find(params[:id])
+        authorize(@mud)
+        @mud.update(approved: true)
+    end
+    
+    def mud_params
+        params.require(:mud).permit(MudPolicy.new(current_user, @mud).permitted_params)
+    end
+end
+
+class MudPolicy
+    def update?
+        user.admin? || user == mud.user
+    end
+    
+    def approval?
+        user.admin?
+    end
+    
+    def permitted_params
+        if user.admin?
+            [:name, :description, :approved]
+        else
+            [:name, :description]
+        end
+    end
+end

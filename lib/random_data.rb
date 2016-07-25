@@ -6,6 +6,15 @@ module RandomData
     "#{first_name} #{last_name}"
   end
   
+  def self.random_title
+    strings = []
+    rand(2..4).times do
+      strings << random_word
+    end
+    
+    sentence = strings.map! { |word| word.capitalize }.join(" ")
+  end
+  
   def self.random_username
       "#{random_word.capitalize}"
   end

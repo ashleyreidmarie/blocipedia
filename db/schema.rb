@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525035307) do
+ActiveRecord::Schema.define(version: 20160706032213) do
+
+  create_table "muds", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.boolean  "approved",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "muds", ["name"], name: "index_muds_on_name"
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "wiki_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pages", ["wiki_id"], name: "index_pages_on_wiki_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -40,5 +60,19 @@ ActiveRecord::Schema.define(version: 20160525035307) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
+
+  create_table "wikis", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "private"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "mud_id"
+  end
+
+  add_index "wikis", ["mud_id"], name: "index_wikis_on_mud_id"
+  add_index "wikis", ["user_id"], name: "index_wikis_on_user_id"
 
 end

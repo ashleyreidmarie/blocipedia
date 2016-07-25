@@ -1,0 +1,60 @@
+<h1>MUDs Dashboard</h1>
+
+<hr />
+
+<div class="panel panel-default">
+  <div class="panel-heading">Appproved MUD - Total: <%= @muds.approved.count %></div>
+  <table class="table table-striped">
+    
+    <% @muds.approved.each do |mud| %>
+      <tr>
+        <td>
+          <%= link_to mud.name, mud_path(mud.id) %>
+        </td>
+        <td>
+          <%= pluralize(mud.wikis.count, 'wiki') %> for this MUD
+        </td>
+        <td>
+          <%= link_to "Edit", edit_mud_path(mud.id) %>
+        </td>
+        <td>
+          <% if mud.wikis.count == 0 %>
+            <%= link_to "Delete", mud_path(mud.id), method: :delete, data: {confirm: 'Are you sure you want to delete this MUD?'} %>
+          <% else %>
+            Cannot delete with Wikis assigned
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  
+  </table>
+</div>
+
+
+<hr />
+
+<div class="panel panel-default">
+  <div class="panel-heading">MUDs awaiting approvel - Total: <%= @muds.unapproved.count %></div>
+  <table class="table table-striped">
+    
+    <% @muds.unapproved.each do |mud| %>
+      <tr>
+        <td>
+          <%= mud.name %>
+        </td>
+        <td>
+          <%= link_to mud.url, mud.url %>
+        </td>
+        <td>
+          <%= link_to "Approve", approval_mud_path(mud.id), method: :post, data: {confirm: 'Are you sure you want to approve this MUD?'} %>
+        </td>
+        <td>
+          <%= link_to "Reject", mud_path(mud.id), method: :delete, data: {confirm: 'Are you sure you want to reject this MUD?'}%>
+        </td>
+      </tr>
+  <% end %>
+  
+  </table>
+</div>
+
+<hr />
