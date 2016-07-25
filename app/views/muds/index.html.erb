@@ -1,10 +1,24 @@
 <h1>MUDs</h1>
-<p>Total MUDs: <%= @muds.count %></p>
+<p></p>
 <hr />
 
-<% @muds.each do |mud| %>
-<p><%= link_to mud.name, mud_path(mud.id) %> | <%= pluralize(mud.wikis.count, 'wiki') %> for this MUD</p>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">Total MUDs: <%= @muds.count %></div>
+  <table class="table table-striped">
+    
+    <% @muds.each do |mud| %>
+      <tr>
+        <td>
+          <%= link_to mud.name, mud_path(mud.id) %>
+        </td>
+        <td>
+          <%= pluralize(mud.wikis.count, 'wiki') %> for this MUD
+        </td>
+      </tr>
+  <% end %>
+  
+  </table>
+</div>
 
 <hr />
 

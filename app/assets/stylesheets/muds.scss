@@ -1,3 +1,60 @@
-// Place all the styles related to the Muds controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#wiki-cards {
+  margin-bottom: 10px;
+}
+
+#wiki-cards .panel-body {
+  overflow: auto;
+  height: 150px;
+}
+
+#wiki-cards .panel {
+  transition: all .75s ease;
+  border: none;
+  padding: 0px;
+  border-radius: 0px;
+  margin: 7px;
+  display: inline-block;
+  width: 30%;
+  -webkit-box-shadow: -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow:    -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
+  box-shadow:         -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
+  }
+  
+#wiki-cards .panel:hover {
+  transition: all .5s ease;
+  -webkit-box-shadow: -5px 7px 8px 0px rgba(50, 50, 50, 0.44);
+  -moz-box-shadow:    -5px 7px 8px 0px rgba(50, 50, 50, 0.44);
+  box-shadow:         -5px 7px 8px 0px rgba(50, 50, 50, 0.44);
+  }  
+
+#wiki-cards .panel-heading {
+  background: #0080FF;
+  color: #fff;
+  border-radius: inherit;
+  text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+#wiki-cards a {
+  transition: all .75s ease;
+}
+
+#wiki-cards a:hover {
+  transition: all .75s ease;
+  text-decoration: none;
+}
+
+#wiki-cards .panel-footer {
+  height: 35px;
+  display: table-cell;
+  width: inherit;
+}
+
+#wiki-cards .glyphicon {
+  transition: all .75s ease;
+  color: #000;
+}
+
+#wiki-cards .glyphicon:hover {
+  transition: all .75s ease;
+  color: #800000;
+}
