@@ -17,7 +17,7 @@ class MudsController < ApplicationController
     @mud = Mud.new(mud_params)
     
     if @mud.save
-        redirect_to @mud, notice: "MUD request submitted successfully!"
+        redirect_to muds_path, notice: "MUD request submitted successfully!"
       else
         flash.now[:alert] = "Unable to submit new MUD request. Please try again."
         render :new
@@ -33,7 +33,7 @@ class MudsController < ApplicationController
     @mud.assign_attributes(mud_params)
     
     if @mud.save
-      flash[:notice] = "MUD was updated successfully."
+      flash[:notice] = "#{@mud.name} was updated successfully."
       redirect_to @mud
     else
       flash.now[:alert] = "There was an error updating the MUD. Please try again."
@@ -43,19 +43,36 @@ class MudsController < ApplicationController
   def destroy
     @mud = Mud.find(params[:id])
     
-    if @mud.destroy
-      flash[:notice] = "Mud was successfully removed."
-      redirect_to root_path
+    if @mud.wikis.count > 0
+      flash[:alert] = "You cannot delete a mud with wikis still assigned."
+    elsif @mud.destroy
+      flash[:notice] = "#{@mud.name} was successfully deleted."
     else
-      flash.now[:alert] = "There was an error removing this MUD. Please try again."
+      flash[:alert] = "There was an error removing this MUD. Please try again."
     end    
+    redirect_to dashboard_muds_path
+  end
+  
+  def dashboard
+    @muds = Mud.all
+  end
+  
+  def approval
+      @mud = Mud.find(params[:id])
+      # authorize(@mud)
+      if @mud.update(approved: true)
+        flash[:notice] = "#{@mud.name} was successfully approved!"
+        redirect_to dashboard_muds_path
+      else
+        flash.now[:alert] = "There was an error approving this MUD. Please try again."
+      end
   end
   
   
   private
   
   def mud_params
-    params.require(:mud).permit(:name, :url, :approved)
+    params.require(:mud).permit(:name, :url)
   end
   
 end

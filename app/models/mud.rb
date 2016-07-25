@@ -16,7 +16,7 @@ class Mud < ActiveRecord::Base
     format: {message: 'Cannot contain those special characters', without: /[@\\\/+*?\[^\]$(){}=!<>|]/}
     
   validates :url, 
-  presence: true, 
-  uniqueness: true, 
-  :url => true
+    presence: true, 
+    uniqueness: true, 
+    :url => true
 end

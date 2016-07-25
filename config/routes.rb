@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   
-  resources :muds
+  #Mud routes
+  resources :muds do
+    collection do
+        get :dashboard
+    end
+    
+    member do
+        post :approval
+    end
+  end
 
   resources :wikis do
    resources :pages
