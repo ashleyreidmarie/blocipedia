@@ -1,10 +1,6 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  before_action :authenticate_user!, :except => [:show]
   
-  def index
-    @wiki = Wiki.find(params[:wiki_id])
-    @pages = @wiki.pages
-  end
   
   def new
     @wiki = Wiki.find(params[:wiki_id])

@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :wikis do
-   resources :pages
+  resources :wikis, except: :index do
+   resources :pages, except: :index
   end
 
   authenticated :user do
