@@ -43,28 +43,16 @@
     padding: 0px;
 }
 
-#wiki-dropdown li a {
+#page-dropdown li a {
   padding: 5px;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-#wiki-dropdown li a:hover {
+#page-dropdown li a:hover {
   transition: all .5s ease;
 }
 
-.wiki-body {
-  font-family: 'Courier New', serif;
-  font-size: 16px;
-}
-
-#wikis-panel .panel {
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  -webkit-box-shadow: -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
-  -moz-box-shadow:    -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
-  box-shadow:         -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
-}
-
-#wikis-panel .panel-heading {
-  height: 35px;
+#pages-view .page-content {
+  min-height: 500px;
 }
 

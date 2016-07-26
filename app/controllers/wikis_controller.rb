@@ -42,7 +42,7 @@ class WikisController < ApplicationController
     
     if @wiki.destroy
       flash[:notice] = "Wiki was successfully deleted."
-      redirect_to root_path
+      redirect_to @wiki.mud
     else
       flash.now[:alert] = "There was an error deleting this wiki. Please try again."
     end

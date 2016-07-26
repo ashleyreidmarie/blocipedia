@@ -102,7 +102,7 @@ RSpec.describe WikisController, type: :controller do
     describe "DELETE destroy" do
       it "returns http redirect" do
         delete :destroy, {id: wiki.id}
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(wiki.mud)
       end
 
       it "removes the wiki" do

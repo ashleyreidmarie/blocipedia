@@ -26,17 +26,30 @@
 
 #wiki-cards .panel-body {
   overflow: auto;
-  height: 150px;
+  height: 250px;
+  background: #000;
+  color: #C0C0C0;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+}
+
+#wiki-cards .panel-body::-webkit-scrollbar {
+    width: .5em;
+}
+ 
+#wiki-cards .panel-body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
 
 #wiki-cards .panel {
   transition: all .75s ease;
   border: none;
   padding: 0px;
-  border-radius: 0px;
+  border-radius: 2px;
   margin: 7px;
   display: inline-block;
-  width: 18%;
+  width: 23%;
   -webkit-box-shadow: -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
   -moz-box-shadow:    -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
   box-shadow:         -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
@@ -50,8 +63,10 @@
   }  
 
 #wiki-cards .panel-heading {
-  background: #0080FF;
-  color: #fff;
+  background: #000;
+  text-align: center;
+  color: #808000;
+  border-bottom: 1px dashed #008080;
   border-radius: inherit;
   text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.3);
   overflow: hidden;
@@ -70,15 +85,20 @@
 #wiki-cards .panel-footer {
   height: 35px;
   display: table-cell;
-  width: inherit;
+  width: 18%;
+  background: #F7F7F7;
+  color: #969696;
 }
 
-#wiki-cards .glyphicon {
+#wiki-cards .glyphicon-book {
+}
+
+#wiki-cards .glyphicon-arrow-right {
   transition: all .75s ease;
   color: #000;
 }
 
-#wiki-cards .glyphicon:hover {
+#wiki-cards .glyphicon-arrow-right:hover {
   transition: all .75s ease;
   color: #800000;
 }

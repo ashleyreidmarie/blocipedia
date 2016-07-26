@@ -5,6 +5,7 @@
   <%= favicon_link_tag %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
@@ -67,14 +68,6 @@
                 <div class="box">
                     <h2><span class="sword">ס₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞΞΞ></span>Welcome, <%= current_user.username %>!<span class="sword2"><ΞΞΞΞΞΞΞΞΞΞ≥≤≥≤≥≤Ξ)|§₪₪₪₪ס</span></h2>
                     <p class="mud-text">A blinding light floods the area, and you lose sight of the cloaked man. You soon find yourself sprawled on ground made of fluffy, white clouds. You stand up, dazed, before noticing an enormous opening in the clouds close by. You peer over the edge to see the entire world below...</p>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p class="text-center"><%= link_to "Create a Wiki", new_wiki_path %></p>
-                      </div>
-                      <div class="col-md-6">
-                        <p class="text-center"><%= link_to "View MUDs", muds_path %></p>
-                      </div>                      
-                    </div>
                 </div>
               <% else %>
               
