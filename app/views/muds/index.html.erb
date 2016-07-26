@@ -1,26 +1,27 @@
 <h1>MUDs</h1>
 <p></p>
-<hr />
+<div id="muds-panel">
 
-<div class="panel panel-default">
-  <div class="panel-heading">Total MUDs: <%= @muds.count %></div>
-  <table class="table table-striped">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="pull-left">Total MUDs: <%= @muds.count %></div>
+      <div class="pull-right"><%= link_to "New MUD Request", new_mud_path %> <span class="glyphicon glyphicon-plus"></span></div>
+    </div>
+    <table class="table table-striped">
+      
+      <% @muds.each do |mud| %>
+        <tr>
+          <td>
+            <%= link_to mud.name, mud_path(mud.id) %>
+          </td>
+          <td>
+            <%= pluralize(mud.wikis.count, 'wiki') %> for this MUD
+          </td>
+        </tr>
+      <% end %>
     
-    <% @muds.each do |mud| %>
-      <tr>
-        <td>
-          <%= link_to mud.name, mud_path(mud.id) %>
-        </td>
-        <td>
-          <%= pluralize(mud.wikis.count, 'wiki') %> for this MUD
-        </td>
-      </tr>
-  <% end %>
+    </table>
+  </div>
   
-  </table>
 </div>
-
-<hr />
-
-<p><%= link_to "New MUD Request", new_mud_path %></p>
 
