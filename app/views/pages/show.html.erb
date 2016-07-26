@@ -1,7 +1,27 @@
-<h1><%= @page.title %></h1>
-<hr />
-<p><%= @page.body %></p>
-<hr />
-<p><%= link_to "Wiki Home", wiki_path(@page.wiki.id) %> | 
-<%= link_to "Edit Content", edit_wiki_page_path(wiki_id: @page.wiki.id, id: @page.id) %> | 
-<%= link_to "Delete Page", [@page.wiki, @page], method: :delete, data: {confirm: 'Are you sure you want to delete this page?'} %> </p>
+<div id="pages-view">
+  <h1 id="page-title"><%= @page.title %></h1>
+  <ol class="breadcrumb pull-right">
+    <li><%= link_to @page.wiki.mud.name, @page.wiki.mud %></li>
+    <li><%= link_to @page.wiki.name, @page.wiki %></li>
+    <li class="active"><%= @page.title %></li>
+  </ol>
+  
+  <div class="btn-group page-btn-group">
+    <a type="button" class="btn dropdown-toggle" id="page-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="glyphicon glyphicon-pencil"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+    </a>
+    <ul class="dropdown-menu" id="page-dropdown">
+      <li><%= link_to "Edit Content", edit_wiki_page_path(wiki_id: @page.wiki.id, id: @page.id) %></li>
+      <li><%= link_to "Delete Page", [@page.wiki, @page], method: :delete, data: {confirm: 'Are you sure you want to delete this page?'} %></li>
+    </ul>
+  </div>
+  
+  <hr />
+  
+  <div class="well">
+    <p><%= @page.body %></p>
+  </div>
+
+
+</div>

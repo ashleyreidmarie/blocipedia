@@ -5,6 +5,10 @@ class Wiki < ActiveRecord::Base
   
   before_save { self.name[0] = self.name[0].upcase if self.name}
   
+  #Scopes
+  default_scope { order('name') } 
+  
+  #Validations
   validates :name, 
     length: { minimum: 3 }, 
     presence: true, 

@@ -1,3 +1,65 @@
-// Place all the styles related to the Wikis controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#wiki-name {
+  display: inline-block;
+}
+
+#wiki-view .breadcrumb {
+  background: transparent;
+  padding-top: 30px;
+}
+
+#wiki-button {
+  transition: all .5s ease;
+  color: #000;
+}
+
+#wiki-button:hover {
+  transition: all .5s ease;
+  color: red;
+}
+
+#wiki-view .btn-group.open .dropdown-toggle {
+  transition: all .5s ease;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: red;
+}
+
+#wiki-view .btn:active, .btn.active {
+  transition: all .5s ease;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#wiki-dropdown {
+    transition: all .5s ease;
+    background-color: #FFF;
+    border: none;
+    border-radius: 0px;
+    padding: 0px;
+}
+
+#wiki-dropdown li a {
+  padding: 5px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#wiki-dropdown li a:hover {
+  transition: all .5s ease;
+}
+
+.wiki-body {
+  font-family: 'Courier New', serif;
+  font-size: 16px;
+}
+
+#wikis-panel .panel {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  -webkit-box-shadow: -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow:    -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
+  box-shadow:         -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
+}
+
+#wikis-panel .panel-heading {
+  height: 35px;
+}
+

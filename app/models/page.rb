@@ -3,7 +3,10 @@ class Page < ActiveRecord::Base
   
   before_save { self.title[0] = self.title[0].upcase if self.title}
   
-  #Page validations
+  #Scopes
+  default_scope { order('title') } 
+  
+  #Validations
   validates :title, 
     length: { minimum: 3 },
     presence: true,

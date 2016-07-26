@@ -1,3 +1,70 @@
-// Place all the styles related to the Pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#page-title {
+  display: inline-block;
+}
+
+#pages-view .breadcrumb {
+  background: transparent;
+  padding-top: 30px;
+}
+
+#main-content .breadcrumb > li + li:before {
+    color: #000;
+    content: ">";
+}
+
+#page-button {
+  transition: all .5s ease;
+  color: #000;
+}
+
+#page-button:hover {
+  transition: all .5s ease;
+  color: red;
+}
+
+#pages-view .btn-group.open .dropdown-toggle {
+  transition: all .5s ease;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: red;
+}
+
+#pages-view .btn:active, .btn.active {
+  transition: all .5s ease;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#page-dropdown {
+    transition: all .5s ease;
+    background-color: #FFF;
+    border: none;
+    border-radius: 0px;
+    padding: 0px;
+}
+
+#wiki-dropdown li a {
+  padding: 5px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#wiki-dropdown li a:hover {
+  transition: all .5s ease;
+}
+
+.wiki-body {
+  font-family: 'Courier New', serif;
+  font-size: 16px;
+}
+
+#wikis-panel .panel {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  -webkit-box-shadow: -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow:    -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
+  box-shadow:         -1px 1px 8px 0px rgba(50, 50, 50, 0.25);
+}
+
+#wikis-panel .panel-heading {
+  height: 35px;
+}
+
