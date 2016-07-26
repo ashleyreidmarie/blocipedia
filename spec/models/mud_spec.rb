@@ -28,10 +28,10 @@ RSpec.describe Mud, type: :model do
   
   context "scopes" do
     before do
-      @unapproved_mud = create(:mud)
-      @approved_mud = create(:mud, 
+      @approved_mud = create(:mud)
+      @unapproved_mud = create(:mud, 
                               name: Faker::Name.name, 
-                              approved: true, 
+                              approved: false, 
                               url: Faker::Internet.url)
     end
     

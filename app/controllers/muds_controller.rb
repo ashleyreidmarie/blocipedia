@@ -7,6 +7,8 @@ class MudsController < ApplicationController
 
   def show
     @mud = Mud.find(params[:id])
+    
+   redirect_to muds_path, alert: "#{@mud.name} is still awaiting approval. Please try again later" unless @mud.approved == true
   end
 
   def new

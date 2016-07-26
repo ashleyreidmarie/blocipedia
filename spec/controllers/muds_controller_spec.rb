@@ -169,4 +169,14 @@ RSpec.describe MudsController, type: :controller do
     
   end
   
+  context "all users" do
+    describe "GET #show" do
+      it "redirects when attempting to view unapproved mud" do
+        unapproved_mud = Mud.create!(name: Faker::Name.first_name, url: Faker::Internet.url, approved: false)
+        get :show, {id: unapproved_mud.id}
+        expect(response).to redirect_to(muds_path)
+      end
+    end
+  end
+  
 end

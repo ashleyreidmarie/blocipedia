@@ -6,12 +6,6 @@ RSpec.describe WikisController, type: :controller do
   let(:wiki) { create(:wiki, mud: mud, user: user) }
 
   context "guest user" do
-    describe "GET #index" do
-      it "returns http success" do
-        get :index
-        expect(response).to have_http_status(:success)
-      end
-    end
     
     describe "GET #show" do
       it "returns http success" do
@@ -62,13 +56,6 @@ RSpec.describe WikisController, type: :controller do
 
   context "logged in user" do
     before { sign_in(user) }
-  
-    describe "GET #index" do
-      it "returns http success" do
-        get :index
-        expect(response).to have_http_status(:success)
-      end
-    end
     
     describe "GET #show" do
       it "returns http success" do

@@ -8,12 +8,6 @@ RSpec.describe PagesController, type: :controller do
 
 
   context "guest user" do
-    describe "GET #index" do
-      it "returns http success" do
-        get :index, wiki_id: wiki.id
-        expect(response).to have_http_status(:success)
-      end
-    end
     
     describe "GET #show" do
       it "returns http success" do
@@ -62,13 +56,6 @@ RSpec.describe PagesController, type: :controller do
 
   context "logged in user" do
     before { sign_in(user) }
-  
-    describe "GET #index" do
-      it "returns http success" do
-        get :index, wiki_id: wiki.id
-        expect(response).to have_http_status(:success)
-      end
-    end
     
     describe "GET #show" do
       it "returns http success" do
