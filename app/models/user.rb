@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :validatable, :confirmable, :lockables
   
   before_save { self.username[0] = self.username[0].upcase if self.username }
+  before_save { self.role ||= :standard }
   
   validates :username, length: { minimum: 2, maximum: 35 }, presence: true, uniqueness: true, format: {message: 'cannot contain special characters', without: /[@\\\/+*?\[^\]$(){}=!<>|:\s]/}
   
@@ -16,4 +17,5 @@ class User < ActiveRecord::Base
     find_by('username = ? OR email = ?', username_or_email, username_or_email)
   end
   
+  enum role: [:standard, :premium, :admin]
 end

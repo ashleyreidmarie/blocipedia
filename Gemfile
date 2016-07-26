@@ -23,6 +23,7 @@
  gem 'pry'
  gem 'devise'
  gem "validate_url"
+ gem "pundit"
 
  group :development, :test do
    gem 'byebug'
