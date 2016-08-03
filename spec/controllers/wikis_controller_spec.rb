@@ -139,4 +139,39 @@ RSpec.describe WikisController, type: :controller do
     end
     
   end
+  
+  context "Admin role user CRUD on unowned wiki" do
+    before {
+      user.admin!
+      sign_in(user) }
+      
+    let(:unowned_wiki) { create(:wiki) }
+  
+    describe "GET #edit" do
+      it "returns http success" do
+        get :edit, {id: unowned_wiki.id}
+        expect(response).to have_http_status(:success)
+      end
+    end
+    
+    describe "PUT #update" do
+      it "returns http redirect to wiki#show view" do
+        put :update, id: unowned_wiki.id, wiki: {name: Faker::Name.first_name, description: Faker::Hipster.paragraph, mud: mud}
+        expect(response).to redirect_to(wiki_path(id: unowned_wiki.id))
+      end
+    end
+    
+    describe "DELETE destroy" do
+      it "returns http redirect to muds#index" do
+        delete :destroy, {id: unowned_wiki.id}
+        expect(response).to redirect_to(unowned_wiki.mud)
+      end
+
+      it "removes the wiki" do
+        delete :destroy, {id: unowned_wiki.id}
+        expect(Wiki.count).to eq(0)
+      end
+    end
+    
+  end  
 end
