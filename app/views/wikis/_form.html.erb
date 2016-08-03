@@ -11,7 +11,7 @@
   <% end %>
   <div class="form-group">
       <%= f.label :mud %>
-      <%= f.collection_select(:mud_id, Mud.approved, :id, :name, (params[:action] == "edit" ? {:selected => wiki.mud.id} : {:selected => Mud.approved.first.id} )) %>
+      <%= f.collection_select(:mud_id, Mud.approved, :id, :name, (params[:action] == "edit" ? {:selected => wiki.mud.id} : {include_blank: 'Select a MUD'} )) %>
   </div>
   <div class="form-group">
     <%= f.label :name %>
@@ -20,6 +20,13 @@
   <div class="form-group">
     <%= f.label :description %>
     <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Wiki's Description" %>
+  </div>
+  <div class="form-group">
+    <% if policy(@wiki).make_private_for?(params["action"]) %>
+      <%= f.label :private, class: 'checkbox' do %>
+        <%= f.check_box :private %> Private Wiki
+      <% end %>
+    <% end %>
   </div>
   
   <%= f.submit "Save", class: 'btn btn-success' %>

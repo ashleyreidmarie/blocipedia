@@ -2,10 +2,12 @@ class WikisController < ApplicationController
   before_action :authenticate_user!, :except => [:show]
 
   def new
+    authorize Wiki
     @wiki = Wiki.new
   end
 
   def create
+    authorize Wiki
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
     
@@ -19,14 +21,18 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def edit
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def update
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
+    
     @wiki.assign_attributes(wiki_params)
     
     if @wiki.save
@@ -39,6 +45,7 @@ class WikisController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
     
     if @wiki.destroy
       flash[:notice] = "Wiki was successfully deleted."
@@ -52,7 +59,7 @@ class WikisController < ApplicationController
   private
   
   def wiki_params
-    params.require(:wiki).permit(:name, :description, :mud_id)
+    params.require(:wiki).permit(WikiPolicy.new(current_user, @wiki).permitted_params_for(params["action"]))
   end
   
 end

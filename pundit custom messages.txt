@@ -1,0 +1,29 @@
+config/locales/en.yml
+en:
+  a:
+    b:
+      c: 'hello'
+  pundit:
+    post_policy:
+      create?: 'You cannot create this post'
+  wikis_controller:
+    save_error: "sorry something went wrong"
+
+
+"post_policy"
+
+
+
+t("post_policy.create?", scope: 'pundit', langauge: 'en')
+# => 'You cannot create this post'
+
+
+
+
+class WikisController
+  def create
+    wiki = Wiki.new(wiki_params)
+    if wiki.save
+      redirect_to wiki
+    else
+      flash[:error] = t('wikis_controller.save_error')

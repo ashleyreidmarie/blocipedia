@@ -7,6 +7,9 @@ class Wiki < ActiveRecord::Base
   
   #Scopes
   default_scope { order('name') } 
+  # scope :public_to, ->(user){where('private = ? OR user_id = ?', false, user.id)} - added to WikiPolicy
+  # scope :public_to, ->(user){where(public: true).or(where(user: user))} - Rails 5
+
   
   #Validations
   validates :name, 

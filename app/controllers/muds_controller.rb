@@ -2,6 +2,7 @@ class MudsController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
   
   def index
+    authorize Mud
     @muds = Mud.approved
   end
 
@@ -12,10 +13,12 @@ class MudsController < ApplicationController
   end
 
   def new
+    authorize Mud
     @mud = Mud.new
   end
   
   def create
+    authorize Mud
     @mud = Mud.new(mud_params)
     
     if @mud.save
@@ -27,11 +30,14 @@ class MudsController < ApplicationController
   end
 
   def edit
+    authorize Mud
     @mud = Mud.find(params[:id])
   end
   
   def update
     @mud = Mud.find(params[:id])
+    authorize @mud
+    
     @mud.assign_attributes(mud_params)
     
     if @mud.save
@@ -44,6 +50,7 @@ class MudsController < ApplicationController
   
   def destroy
     @mud = Mud.find(params[:id])
+    authorize @mud
     
     if @mud.wikis.count > 0
       flash[:alert] = "You cannot delete a mud with wikis still assigned."
@@ -56,12 +63,13 @@ class MudsController < ApplicationController
   end
   
   def dashboard
+    authorize Mud
     @muds = Mud.all
   end
   
   def approval
       @mud = Mud.find(params[:id])
-      # authorize(@mud)
+      authorize @mud
       if @mud.update(approved: true)
         flash[:notice] = "#{@mud.name} was successfully approved!"
         redirect_to dashboard_muds_path

@@ -1,0 +1,64 @@
+describe WikisController do
+    describe 'destroy' do
+        let!(:wiki) { create(:wiki) }
+        context 'as an admin' do
+            before { sign_in(create(:user, role: :admin)) }
+            it 'deletes the wiki' do
+                expect {
+                    delete :destroy, id: wiki.id
+                }.to change(Wiki, :count).by(-1)
+            end
+        end
+    end
+end
+
+
+
+describe WikisController do
+    describe '#destroy' do 
+       context 'when authorized' do 
+        before {make(Wikipolicy).mehtod(:destroy?).always_retunr(true))}
+        
+        it "destroys the wiki" do
+                expect {
+                    delete :destroy, id: wiki.id
+                }.to change(Wiki, :count).by(-1)
+            
+        end
+       end
+    end
+end
+
+
+
+describe WikiPolicy do
+    let(:wiki) { create(:wiki) }
+    let(:policy) { WikiPolicy.new(user, wiki) }
+    
+    context 'as an admin' do
+        let(:user) { create(:user, role: :admin) }
+
+        describe '#destroy?' do
+            it 'returns true' do
+                expect(policy.destroy?).to eq(true)
+            end
+        end
+        
+        describe '.scope' do
+            it 'returns all wikis' do
+                expect(WikiPolicy::Scope.new(user, Wiki.all).resolve).to eq([wiki])
+            end
+        end
+    end
+end
+
+
+describe WikiPolicy do
+    subject { described_class }
+    
+    permissions(:destroy?) do
+        it 'is permitted for an admin' do
+            expect(described_class).to permit(create(:user, role: :admin), create(:wiki))
+        end
+    end
+end

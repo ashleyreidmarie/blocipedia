@@ -2,6 +2,6 @@ FactoryGirl.define do
   factory :page do
     title "MyString"
     body "MyText"
-    wiki nil
+    wiki
   end
 end

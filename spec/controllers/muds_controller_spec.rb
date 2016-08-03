@@ -63,8 +63,8 @@ RSpec.describe MudsController, type: :controller do
         get :dashboard
         expect(response).to redirect_to(new_user_session_path)
       end
-      
     end
+    
   end
  
   context "logged in user" do
@@ -91,7 +91,7 @@ RSpec.describe MudsController, type: :controller do
       end
     end
     
-    describe "POST create" do
+    describe "POST #create" do
       it "returns http redirect" do
         post :create,  mud: {name: Faker::Name.first_name, url: Faker::Internet.url}
         expect(response).to redirect_to(muds_path)
@@ -103,13 +103,50 @@ RSpec.describe MudsController, type: :controller do
     end
   
     describe "GET #edit" do
+      it "returns http redirect" do
+        get :edit, id: mud.id
+        expect(response).to have_http_status(302)
+      end
+    end
+    
+    describe "PUT #update" do
+      it "returns http redirect" do
+        new_name = Faker::Name.first_name
+        new_url = Faker::Internet.url        
+        
+        put :update, id: mud.id, mud: {name: new_name, url: new_url}
+        expect(response).to have_http_status(302)
+      end      
+    end 
+    
+    describe "DELETE #destroy" do
+      it "returns http redirect" do
+        delete :destroy, {id: mud.id}
+        expect(response).to have_http_status(302)
+      end      
+    end
+    
+    describe "GET dashboard" do
+      it "returns http redirect" do
+        get :dashboard
+        expect(response).to have_http_status(302)
+      end
+    end    
+    
+  end
+  
+  context "admin user" do
+    before { user.admin!
+      sign_in(user) }
+    
+    describe "GET #edit" do
       it "returns http success" do
         get :edit, id: mud.id
         expect(response).to have_http_status(:success)
       end
-    end
-    
-    describe "PUT update" do
+    end    
+      
+    describe "PUT #update" do
       it "returns http redirect" do
         new_name = Faker::Name.first_name
         new_url = Faker::Internet.url
@@ -117,8 +154,8 @@ RSpec.describe MudsController, type: :controller do
         put :update, id: mud.id, mud: {name: new_name, url: new_url}
         expect(response).to redirect_to(mud_path(id: mud.id))
       end
-    end    
-    
+    end
+      
     describe "DELETE destroy" do
       describe "wiki is still assgined" do
         it "flashes alert notice" do
@@ -139,21 +176,8 @@ RSpec.describe MudsController, type: :controller do
           expect(Mud.count).to eq(0)
         end
       end
-    end   
-    
-    describe "GET dashboard" do
-      it "returns http success" do
-        get :dashboard
-        expect(response).to have_http_status(:success)
-      end
+    end       
       
-    end    
-    
-  end
-  
-  context "admin user" do
-    before { sign_in(user) }
-    
     describe "GET dashboard" do
       it "returns http success" do
         get :dashboard

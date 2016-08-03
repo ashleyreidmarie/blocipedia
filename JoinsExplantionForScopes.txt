@@ -1,0 +1,31 @@
+users
+id
+1
+2
+
+wikis
+id
+5
+7
+
+collaborators
+id user_id wiki_id
+15 1       7
+16 1       5
+17 2       5
+
+
+
+
+composite table
+wikis.id collaborators.id collaborators.user_id collaborators.wiki_id
+5        16               1                     5
+5        17               2                     5
+7        15               1                     7
+
+
+
+user = User.find(1)
+
+Wiki.joins(:collaborators).where(collaborators: {user_id: user.id}) # Rails 5
+Wiki.joins(:collaborators).where('collaborators.user_id = ? OR wikis.private = ? OR wikis.user_id = ?', user.id, false, user.id)
