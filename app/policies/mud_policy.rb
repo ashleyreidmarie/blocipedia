@@ -1,7 +1,7 @@
 class MudPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.admin?
+      if user && user.admin?
         scope.all
       else
         scope.approved

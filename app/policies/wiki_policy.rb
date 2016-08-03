@@ -1,16 +1,22 @@
 class WikiPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.admin?
+      if user.present? && user.admin?
         scope.all
-      else
+      elsif user.present?
         scope.where('private = ? OR user_id = ?', false, user.id)
+      else
+        scope.where(private: false)
       end
     end
   end
   
   def show?
-    user.admin? || record.private == false || record.user == user
+    if user.present? && (user.admin? || record.user == user)
+      true
+    else
+      record.private == false
+    end
   end
   
   def create?
@@ -20,6 +26,10 @@ class WikiPolicy < ApplicationPolicy
   def update?
     user.admin? || record.user == user
   end
+  
+  def destroy?
+    user.admin? || record.user == user
+  end  
 
   #allow admin users, users who own a wiki and are premium who are updating, 
   #and users who are premium who are creating to see Private Wiki checkbox
@@ -32,10 +42,6 @@ class WikiPolicy < ApplicationPolicy
     end
   end
   
-  def destroy?
-    user.admin? || record.user == user
-  end
-
   #allow admin users, users who own a wiki and are premium who are updating, 
   #and users who are premium who are creating to use the :private param  
   def permitted_params_for(action)
