@@ -10,7 +10,7 @@ class WikiPolicy < ApplicationPolicy
   end
   
   def show?
-    true
+    user.admin? || record.private == false || record.user == user
   end
   
   def create?

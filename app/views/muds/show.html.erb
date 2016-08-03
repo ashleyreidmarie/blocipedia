@@ -3,7 +3,7 @@
 
 <div id="wiki-cards">
 
-  <% @mud.wikis.each do |wiki| %>
+  <% policy_scope(@mud.wikis).each do |wiki| %>
     <div class="panel panel-default">
       <div class="panel-heading"><h3 class="panel-title"><%= link_to wiki.name, wiki_path(wiki.id) %></h3></div>
       <div class="panel-body text-justify">

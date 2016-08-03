@@ -18,7 +18,7 @@
             <%= link_to mud.url, mud.url %>
           </td>
           <td>
-            <%= pluralize(mud.wikis.count, 'wiki') %> for this MUD
+            <%= pluralize(policy_scope(mud.wikis).count, 'wiki') %> for this MUD
           </td>
         </tr>
       <% end %>

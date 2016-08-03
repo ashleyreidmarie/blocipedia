@@ -66,10 +66,10 @@ ActiveRecord::Schema.define(version: 20160726052400) do
   create_table "wikis", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.boolean  "private"
+    t.boolean  "private",     default: false
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "mud_id"
   end
 

@@ -1,9 +1,9 @@
 #Seed Users
 15.times do
-    u = Faker::Name.first_name
+    username = Faker::Name.first_name
     User.create!(
-        username: u,
-        email: Faker::Internet.safe_email(u),
+        username: username,
+        email: Faker::Internet.safe_email(username),
         password: Faker::Internet.password(6, 15),
         confirmed_at: Date.today
         )

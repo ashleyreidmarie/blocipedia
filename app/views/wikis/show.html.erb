@@ -11,8 +11,13 @@
       <span class="sr-only">Toggle Dropdown</span>
     </a>
     <ul class="dropdown-menu" id="wiki-dropdown">
-      <li><%= link_to "Edit Wiki", edit_wiki_path(id: @wiki.id) %></li>
-      <li><%= link_to "Delete Wiki", @wiki, method: :delete, data: {confirm: 'Are you sure you want to delete this wiki and all its pages?'} %></li>
+      <% if policy(@wiki).edit? %>
+        <li><%= link_to "Edit Wiki", edit_wiki_path(id: @wiki.id) %></li>
+      <% end %>
+      <% if policy(@wiki).destroy? %>
+        <li><%= link_to "Delete Wiki", @wiki, method: :delete, data: {confirm: 'Are you sure you want to delete this wiki and all its pages?'} %></li>
+      <% end %>  
+      <li><a href="#">Placeholder</a></li>
     </ul>
   </div>
   
