@@ -47,6 +47,20 @@
   transition: all .5s ease;
 }
 
+#wiki-owner {
+  font-style: italic;
+  font-size: 12px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.private-eye {
+  display: inline-block;
+  margin-left: 18px;
+  margin-right: 5px;
+  font-size: 11px;
+}
+
 .wiki-body {
   font-family: 'Courier New', serif;
   font-size: 16px;
