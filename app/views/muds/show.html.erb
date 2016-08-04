@@ -1,5 +1,8 @@
 <h1 id="mud-name"><%= @mud.name %></h1>
-<div><span class="glyphicon glyphicon-plus"></span> <%= link_to "Create New Wiki", new_wiki_path %></div>
+
+<% if policy(:wiki).create? %>
+  <div><span class="glyphicon glyphicon-plus"></span> <%= link_to "Create New Wiki", new_wiki_path %></div>
+<% end %>  
 
 <div id="wiki-cards">
 

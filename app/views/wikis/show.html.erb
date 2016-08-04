@@ -23,16 +23,12 @@
     </div>
   <% end %>
   <div class="row">
-    <div class="private-eye pull-left">
-      <% if @wiki.private %>
+    <% if @wiki.private? %>
+      <div class="private-eye pull-left">
         <span class="glyphicon glyphicon-lock"></span>
-      <% end %>
-    </div>
-    
-    <% if @wiki.user == current_user %>
-      <div class="col-md-1" id="wiki-owner">You own this wiki</div>
-    <% end %>
-    
+      </div>
+      <div class="col-md-1" id="wiki-private">This wiki is private</div>
+    <% end %>    
   </div>
   
   <hr />

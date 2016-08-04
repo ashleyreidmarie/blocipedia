@@ -24,11 +24,11 @@ class WikiPolicy < ApplicationPolicy
   end
   
   def update?
-    user.admin? || record.user == user
+    user.admin? || record.user == user if user.present?
   end
   
   def destroy?
-    user.admin? || record.user == user
+    user.admin? || record.user == user if user.present?
   end  
 
   #allow admin users, users who own a wiki and are premium who are updating, 

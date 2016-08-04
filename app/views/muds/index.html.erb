@@ -5,7 +5,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-left">Total MUDs: <%= @muds.count %></div>
-      <div class="pull-right"><%= link_to "New MUD Request", new_mud_path %> <span class="glyphicon glyphicon-plus"></span></div>
+      <% if policy(:mud).create? %>
+        <div class="pull-right"><%= link_to "New MUD Request", new_mud_path %> <span class="glyphicon glyphicon-plus"></span></div>
+      <% end %>
     </div>
     <table class="table table-striped">
       
