@@ -6,6 +6,11 @@ class Page < ActiveRecord::Base
   #Scopes
   default_scope { order('title') } 
   
+  scope :not_private, ->{self.joins(:wiki).where('wikis.private = ?', false)}
+  scope :is_private, ->{self.joins(:wiki).where('wikis.private = ?', true)}
+  scope :wiki_owned_by, ->(user){self.joins(:wiki).where('wikis.user_id = ?', user.id)}
+  scope :visible_to, ->(user){self.joins(:wiki).where('wikis.user_id =? OR wikis.private = ?', user.id, false)}
+  
   #Validations
   validates :title, 
     length: { minimum: 3 },

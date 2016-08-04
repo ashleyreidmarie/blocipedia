@@ -4,12 +4,15 @@ class PagesController < ApplicationController
   
   def new
     @wiki = Wiki.find(params[:wiki_id])
-    @page = Page.new
+    @page = @wiki.pages.new
+    authorize @page
   end
 
   def create
     @wiki = Wiki.find(params[:wiki_id])
     @page = @wiki.pages.build(page_params)
+    
+    authorize @page
     
      if @page.save
        flash[:notice] = "Page was saved successfully."
@@ -22,14 +25,18 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
+    authorize @page
   end
 
   def edit
     @page = Page.find(params[:id])
+    authorize @page
   end
 
   def update
     @page = Page.find(params[:id])
+    authorize @page
+    
     @page.assign_attributes(page_params)
     
     if @page.save
@@ -43,6 +50,7 @@ class PagesController < ApplicationController
 
   def destroy
     @page = Page.find(params[:id])
+    authorize @page
     
     if @page.destroy
       flash[:notice] = "\"#{@page.title}\" was deleted successfully."
