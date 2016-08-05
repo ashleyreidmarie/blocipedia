@@ -24,6 +24,7 @@
  gem 'devise'
  gem "validate_url"
  gem "pundit"
+ gem "stripe"
 
  group :development, :test do
    gem 'byebug'
