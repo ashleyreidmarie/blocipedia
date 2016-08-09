@@ -37,7 +37,11 @@ class WikiPolicy < ApplicationPolicy
     case action
     when "new"
       user.admin? || user.premium?
+    when "create"
+      user.admin? || user.premium?
     when "edit"
+      user.admin? || ( record.user == user && user.premium? )
+    when "update"
       user.admin? || ( record.user == user && user.premium? )
     end
   end
