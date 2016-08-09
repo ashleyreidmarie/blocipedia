@@ -1,5 +1,28 @@
+<div class="jumbotron">
+  <div class="container"> 
+    <div class="main">
+      <div id="main-content-box">
+        <div class="box">
+          <h2><span class="sword">ס₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞΞΞ></span>Premium Membership<span class="sword2"><ΞΞΞΞΞΞΞΞΞΞ≥≤≥≤≥≤Ξ)|§₪₪₪₪ס</span></h2>
+          <p class="premium-faq-text">What do I get with a Premium Membership?</p>
+          <p class="premium-faq-text">How much does it cost?</p>
+          <p class="premium-faq-text">Is it worth it?</p>
+          <%= form_tag charges_path do %>
+           <h4>I'm Ready!</h4>
+           <div id="pay-btn">
+             <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
+           </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
 
-<%= form_tag charges_path do %>
- <h4>Click the button!</h4>
- <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
-<% end %>
+
+  
+
+  
+
+
+
