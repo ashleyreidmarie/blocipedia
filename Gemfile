@@ -25,6 +25,7 @@
  gem "validate_url"
  gem "pundit"
  gem "stripe"
+ gem "redcarpet"
 
  group :development, :test do
    gem 'byebug'

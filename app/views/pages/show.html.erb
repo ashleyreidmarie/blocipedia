@@ -26,7 +26,10 @@
   <hr />
   
   <div class="well">
-    <div class="page-content"><%= @page.body %></div>
+    <div class="page-content">
+      <%= table_of_contents(@page.body) %>
+      <%= markdown(@page.body) %>
+    </div>
   </div>
 
 </div>

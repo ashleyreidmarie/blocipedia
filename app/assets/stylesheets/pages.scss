@@ -52,6 +52,11 @@
   transition: all .5s ease;
 }
 
+#pages-view .well {
+  background: #000;
+  color: #C0C0C0;
+}
+
 #pages-view .page-content {
   min-height: 500px;
 }

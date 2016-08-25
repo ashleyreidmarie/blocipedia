@@ -2,6 +2,10 @@
   <li><%= link_to "MUDs", muds_path %></li>
   <li>|</li>
     <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <li><%= link_to "MUDs Dashboard", dashboard_muds_path %></li>
+        <li>|</li>
+      <% end %>
       <% if current_user.standard? %>
         <li><%= link_to "Become Premium", new_charge_path %></li>
         <li>|</li>

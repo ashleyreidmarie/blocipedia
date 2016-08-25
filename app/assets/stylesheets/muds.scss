@@ -9,6 +9,46 @@
   height: 35px;
 }
 
+#muds-button {
+  transition: all .5s ease;
+  color: #000;
+}
+
+#muds-button:hover {
+  transition: all .5s ease;
+  color: red;
+}
+
+#muds-view .btn-group.open .dropdown-toggle {
+  transition: all .5s ease;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: red;
+}
+
+#pages-view .btn:active, .btn.active {
+  transition: all .5s ease;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#muds-dropdown {
+    transition: all .5s ease;
+    background-color: #FFF;
+    border: none;
+    border-radius: 0px;
+    padding: 0px;
+}
+
+#muds-dropdown li a {
+  padding: 5px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#muds-dropdown li a:hover {
+  transition: all .5s ease;
+}
+
 .glyphicon-plus {
   color: #646464;
 }
